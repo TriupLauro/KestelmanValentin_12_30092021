@@ -1,17 +1,16 @@
 import {Component} from "react";
 import Nutrition from "./Nutrition";
+import DailyActivity from "./DailyActivity";
 
 class Dashboard extends Component {
     render() {
         return(
             <div className="mt-t-dboard ml-l-dboard">
-                <div className="text-5xl">Bonjour <span className="text-highlight">Thomas</span></div>
+                <div className="text-5xl">Bonjour <span className="text-highlight">{this.props.firstName}</span></div>
                 <div className="mt-t-record text-lg">Félicitation ! Vous avez explosé vos objectifs hier 👏</div>
                 <div className="flex mt-t-main">
                     <div>
-                        <div>
-                            Activité quotidienne
-                        </div>
+                        <DailyActivity data={this.props.activityData}/>
                         <div className="flex">
                             <div>Durée moyenne</div>
                             <div>Radar</div>
@@ -19,10 +18,10 @@ class Dashboard extends Component {
                         </div>
                     </div>
                     <div>
-                        <Nutrition type="calories" value="1,930"/>
-                        <Nutrition type ="proteins" value="155"/>
-                        <Nutrition type="carbs" value="290"/>
-                        <Nutrition type="lipids" value="50"/>
+                        <Nutrition type="calories" value={this.props.nutritionData.calorieCount}/>
+                        <Nutrition type ="proteins" value={this.props.nutritionData.proteinCount}/>
+                        <Nutrition type="carbs" value={this.props.nutritionData.carbohydrateCount}/>
+                        <Nutrition type="lipids" value={this.props.nutritionData.lipidCount}/>
                     </div>
                 </div>
             </div>

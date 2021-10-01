@@ -8,7 +8,7 @@ class Nutrition extends Component {
         this.name = valueHolder.fr
         this.unit = valueHolder.unit
         this.bgc = valueHolder.bgc
-        this.icon = <valueHolder.icon className="opacity-100 m-auto" width="20" height="20"/>
+        this.icon = <valueHolder.icon className="m-auto"/>
     }
 
     render() {
