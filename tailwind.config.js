@@ -10,7 +10,8 @@ module.exports = {
                 'proteins' : '#4AB8FF10',
                 'carbs' : '#F9CE2310',
                 'lipids' : '#FD518110',
-                'calories' : '#FF000010'
+                'calories' : '#FF000010',
+                'bar-chart-title' : '#20253A'
 
             },
             spacing : {
@@ -22,7 +23,8 @@ module.exports = {
             fontSize: {
                 md : '1.5rem',
                 sm : '0.75rem',
-                'nutri-value' : '1.25rem'
+                'nutri-value' : '1.25rem',
+                'bar-legend' : '0.875rem'
             },
             height: {
                 md: '5.625rem',

@@ -17,7 +17,7 @@ class Dashboard extends Component {
                             <div>Score</div>
                         </div>
                     </div>
-                    <div>
+                    <div className="ml-8">
                         <Nutrition type="calories" value={this.props.nutritionData.calorieCount}/>
                         <Nutrition type ="proteins" value={this.props.nutritionData.proteinCount}/>
                         <Nutrition type="carbs" value={this.props.nutritionData.carbohydrateCount}/>
