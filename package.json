@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "react": "^17.0.0",
@@ -12,11 +14,17 @@
     "recharts": "^2.1.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@storybook/addon-actions": "^6.3.9",
+    "@storybook/addon-essentials": "^6.3.9",
+    "@storybook/addon-links": "^6.3.9",
+    "@storybook/react": "^6.3.9",
     "@svgr/cli": "^5.5.0",
     "@vitejs/plugin-react": "^1.0.0",
-    "autoprefixer": "^10.3.6",
-    "postcss": "^8.3.8",
-    "tailwindcss": "^2.2.16",
+    "autoprefixer": "^9",
+    "babel-loader": "^8.2.2",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vite": "^2.6.0"
   }
 }
