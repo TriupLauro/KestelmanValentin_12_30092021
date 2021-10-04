@@ -15,6 +15,7 @@ class App extends Component {
                         nutritionData={this.props.mainData.keyData}
                         activityData={this.props.activityData.sessions}
                         averageSessionsData={this.props.averageSessionsData.sessions}
+                        activityType={this.props.activityTypeData}
                     />
                 </div>
             </>

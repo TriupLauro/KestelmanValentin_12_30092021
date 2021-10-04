@@ -11,7 +11,7 @@ class AverageSessionsLine extends Component {
                     width={258}
                     height={263}
                     border={5}
-                    className="bg-highlight rounded-md"
+                    className="bg-highlight rounded-md mr-7"
                     margin={{top:75, left:15, right:15}}
                 >
                     <XAxis dataKey="day"
