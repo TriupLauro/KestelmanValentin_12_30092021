@@ -1,6 +1,7 @@
 import {Component} from "react";
 import Nutrition from "./Nutrition";
 import DailyActivity from "./DailyActivity";
+import AverageSessionsLine from "./AverageSessionsLine";
 
 class Dashboard extends Component {
     render() {
@@ -11,8 +12,8 @@ class Dashboard extends Component {
                 <div className="flex mt-t-main">
                     <div>
                         <DailyActivity data={this.props.activityData}/>
-                        <div className="flex">
-                            <div>Durée moyenne</div>
+                        <div className="flex mt-7">
+                            <AverageSessionsLine data={this.props.averageSessionsData} />
                             <div>Radar</div>
                             <div>Score</div>
                         </div>
