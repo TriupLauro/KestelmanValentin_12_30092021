@@ -8,6 +8,7 @@ const userData = USER_MAIN_DATA.find(data => data.id === 18)
 const userActivity = USER_ACTIVITY.find(data => data.userId === 18)
 const userAverageSessions = USER_AVERAGE_SESSIONS.find(data => data.userId === 18)
 const userActivityType = USER_PERFORMANCE.find(data => data.userId === 18)
+const userScore = USER_MAIN_DATA.find(data => data.id === 18).todayScore
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.render(
         activityData={userActivity}
         averageSessionsData={userAverageSessions}
         activityTypeData={userActivityType}
+        scoreData={userScore}
     />
   </React.StrictMode>,
   document.getElementById('root')

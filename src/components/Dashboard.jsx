@@ -3,6 +3,7 @@ import Nutrition from "./Nutrition";
 import DailyActivity from "./DailyActivity";
 import AverageSessionsLine from "./AverageSessionsLine";
 import RadarActivityType from "./RadarActivityType";
+import ScoreRadial from "./ScoreRadial";
 
 class Dashboard extends Component {
     render() {
@@ -16,7 +17,7 @@ class Dashboard extends Component {
                         <div className="flex mt-7">
                             <AverageSessionsLine data={this.props.averageSessionsData} />
                             <RadarActivityType data={this.props.activityType} />
-                            <div>Score</div>
+                            <ScoreRadial data={this.props.scoreData} />
                         </div>
                     </div>
                     <div className="ml-8">

@@ -25,7 +25,8 @@ module.exports = {
                 md : '1.5rem',
                 sm : '0.75rem',
                 'nutri-value' : '1.25rem',
-                'bar-legend' : '0.875rem'
+                'bar-legend' : '0.875rem',
+                'score-percent' : '1.625rem'
             },
             height: {
                 md: '5.625rem',

@@ -5,7 +5,7 @@ class RadarActivityType extends Component {
     constructor(props) {
         super(props);
         this.frenchLabels = {
-            1: 'Cardio',
+            1 : 'Cardio',
             2 : 'Energie',
             3 : 'Endurance',
             4 : 'Force',
