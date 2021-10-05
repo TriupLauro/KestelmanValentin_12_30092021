@@ -1,5 +1,6 @@
 import {Component} from "react";
 import {Line, LineChart, XAxis} from "recharts";
+import PropTypes from "prop-types";
 
 class AverageSessionsLine extends Component {
     render() {
@@ -27,6 +28,13 @@ class AverageSessionsLine extends Component {
             </div>
         )
     }
+}
+
+AverageSessionsLine.propTypes = {
+    data : PropTypes.arrayOf(PropTypes.shape({
+        day : PropTypes.number,
+        sessionLength : PropTypes.number
+    }))
 }
 
 export default AverageSessionsLine

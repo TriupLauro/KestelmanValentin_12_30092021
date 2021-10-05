@@ -1,5 +1,6 @@
 import {Component} from "react";
 import {PolarAngleAxis, PolarGrid, Radar, RadarChart} from "recharts";
+import PropTypes from "prop-types";
 
 class RadarActivityType extends Component {
     constructor(props) {
@@ -34,6 +35,16 @@ class RadarActivityType extends Component {
             </div>
         )
     }
+}
+
+RadarActivityType.propTypes = {
+    data :  PropTypes.shape({
+        userId : PropTypes.number.isRequired,
+        data : PropTypes.arrayOf(PropTypes.shape({
+            value : PropTypes.number,
+            kind : PropTypes.number
+        }))
+    })
 }
 
 export default RadarActivityType

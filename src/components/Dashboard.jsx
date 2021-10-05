@@ -4,6 +4,8 @@ import DailyActivity from "./DailyActivity";
 import AverageSessionsLine from "./AverageSessionsLine";
 import RadarActivityType from "./RadarActivityType";
 import ScoreRadial from "./ScoreRadial";
+import PropTypes from "prop-types";
+import {numberBetweenZeroAndOne} from "../utils/utils";
 
 class Dashboard extends Component {
     render() {
@@ -30,6 +32,38 @@ class Dashboard extends Component {
             </div>
         )
     }
+}
+
+Dashboard.propTypes = {
+    firstName : PropTypes.string.isRequired,
+
+    activityData : PropTypes.arrayOf(PropTypes.shape({
+        day : PropTypes.string,
+        kilogram : PropTypes.number,
+        calories : PropTypes.number
+    })),
+
+    averageSessionsData : PropTypes.arrayOf(PropTypes.shape({
+        day : PropTypes.number,
+        sessionLength : PropTypes.number
+    })),
+
+    activityType : PropTypes.shape({
+        userId : PropTypes.number.isRequired,
+        data : PropTypes.arrayOf(PropTypes.shape({
+            value : PropTypes.number,
+            kind : PropTypes.number
+        }))
+    }),
+
+    scoreData : numberBetweenZeroAndOne,
+
+    nutritionData : PropTypes.shape({
+        calorieCount: PropTypes.number.isRequired,
+        proteinCount: PropTypes.number.isRequired,
+        carbohydrateCount: PropTypes.number.isRequired,
+        lipidCount: PropTypes.number.isRequired
+    })
 }
 
 export default Dashboard

@@ -1,5 +1,6 @@
 import {Component} from "react";
 import {RadialBar, RadialBarChart} from "recharts";
+import {numberBetweenZeroAndOne} from "../utils/utils";
 
 class ScoreRadial extends Component {
     render() {
@@ -32,6 +33,10 @@ class ScoreRadial extends Component {
             </div>
         )
     }
+}
+
+ScoreRadial.propTypes = {
+    data : numberBetweenZeroAndOne
 }
 
 export default ScoreRadial

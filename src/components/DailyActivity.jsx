@@ -1,6 +1,7 @@
 import {Component} from "react";
 import {BarChart, Bar, XAxis, YAxis, Legend} from "recharts";
 import {BarChartLegend} from "../constants/GraphLegends";
+import PropTypes from "prop-types";
 
 class DailyActivity extends Component {
     render() {
@@ -28,6 +29,14 @@ class DailyActivity extends Component {
             </div>
         )
     }
+}
+
+DailyActivity.propTypes = {
+    data : PropTypes.arrayOf(PropTypes.shape({
+        day : PropTypes.string,
+        kilogram : PropTypes.number,
+        calories : PropTypes.number
+    }))
 }
 
 export default DailyActivity

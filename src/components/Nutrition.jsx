@@ -1,5 +1,6 @@
 import {Component} from "react";
 import {NutritionDetails} from "../constants/NutritionDetails";
+import PropTypes from "prop-types";
 
 class Nutrition extends Component {
     constructor(props) {
@@ -24,6 +25,11 @@ class Nutrition extends Component {
             </div>
         )
     }
+}
+
+Nutrition.propTypes = {
+    type : PropTypes.oneOf(["calories","proteins","carbs","lipids"]).isRequired,
+    value : PropTypes.number.isRequired
 }
 
 export default Nutrition
