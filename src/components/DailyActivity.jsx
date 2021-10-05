@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {BarChart, Bar, XAxis, YAxis, Legend} from "recharts";
+import {BarChart, Bar, XAxis, YAxis, Legend, Tooltip, CartesianGrid} from "recharts";
 import {BarChartLegend} from "../constants/GraphLegends";
 import PropTypes from "prop-types";
 
@@ -12,8 +12,15 @@ class DailyActivity extends Component {
                     data={this.props.data}
                     width={800}
                     height={300}
-                    margin={{top: 100}}
+                    margin={{top: 90}}
                 >
+                    <Tooltip
+                        labelStyle={{display:  'none'}}
+                        contentStyle={{background : '#E60000'}}
+                        itemStyle={{color : 'white', fontSize : 12}}
+                        formatter={(value, name) => `${value}${units[name]}`}
+                    />
+                    <CartesianGrid vertical={false} strokeDasharray={4}/>
                     <XAxis dataKey="day" tickLine={false}/>
                     <YAxis yAxisId="kilogram" orientation="right" tickLine={false} axisLine={false} dataKey="kilogram"
                            domain={['dataMin - 1', 'dataMax']} tickCount={3}/>
@@ -29,6 +36,11 @@ class DailyActivity extends Component {
             </div>
         )
     }
+}
+
+const units = {
+    kilogram : 'kg',
+    calories : 'kcal'
 }
 
 DailyActivity.propTypes = {
