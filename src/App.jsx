@@ -12,7 +12,8 @@ class App extends Component {
                 <TopNav />
                 <div className="flex">
                     <VerticalBar />
-                    <Dashboard 
+                    <Dashboard
+                        loading={this.props.loading}
                         firstName={this.props.mainData.userInfos.firstName}
                         nutritionData={this.props.mainData.keyData}
                         activityData={this.props.activityData.sessions}
@@ -29,6 +30,8 @@ class App extends Component {
 
 
 App.propTypes = {
+    loading : PropTypes.bool,
+
     mainData : PropTypes.shape({
         id : PropTypes.number.isRequired,
         userInfos : PropTypes.shape({

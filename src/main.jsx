@@ -10,9 +10,12 @@ const userAverageSessions = USER_AVERAGE_SESSIONS.find(data => data.userId === 1
 const userActivityType = USER_PERFORMANCE.find(data => data.userId === 18)
 const userScore = USER_MAIN_DATA.find(data => data.id === 18).todayScore
 
+let loading = true
+
 ReactDOM.render(
   <React.StrictMode>
     <App
+        loading={loading}
         mainData={userData}
         activityData={userActivity}
         averageSessionsData={userAverageSessions}
