@@ -10,15 +10,12 @@ class DailyActivity extends Component {
                 <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal'>Activité quotidienne</div>
                 <BarChart
                     data={this.props.data}
-                    width={800}
-                    height={300}
+                    width={835}
+                    height={320}
                     margin={{top: 90}}
                 >
                     <Tooltip
-                        labelStyle={{display:  'none'}}
-                        contentStyle={{background : '#E60000'}}
-                        itemStyle={{color : 'white', fontSize : 12}}
-                        formatter={(value, name) => `${value}${units[name]}`}
+                        content={<DailyActivityTooltip />}
                     />
                     <CartesianGrid vertical={false} strokeDasharray={4}/>
                     <XAxis dataKey="day" tickLine={false}/>
@@ -38,9 +35,16 @@ class DailyActivity extends Component {
     }
 }
 
-const units = {
-    kilogram : 'kg',
-    calories : 'kcal'
+class DailyActivityTooltip extends Component {
+    render() {
+        return(
+            this.props.active &&
+            <ul className="bg-daily-tooltip px-2 text-center">
+                <li className="text-white text-xs py-4">{this.props.payload[0]?.payload.kilogram} kg</li>
+                <li className="text-white text-xs py-4">{this.props.payload[0]?.payload.calories} Kcal</li>
+            </ul>
+        )
+    }
 }
 
 DailyActivity.propTypes = {

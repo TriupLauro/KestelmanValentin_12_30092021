@@ -12,7 +12,8 @@ module.exports = {
                 'lipids' : '#FD518110',
                 'calories' : '#FF000010',
                 'bar-chart-title' : '#20253A',
-                'radar' : '#2B2D30'
+                'radar' : '#2B2D30',
+                'daily-tooltip' : '#E60000'
 
             },
             spacing : {
