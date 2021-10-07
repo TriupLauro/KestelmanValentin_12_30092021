@@ -42,7 +42,6 @@ getAllData(18)
                 document.getElementById('root')
             )
         }else if(error.request) {
-            console.log(error.request)
             ReactDOM.render(
                 <ErrorDisplay errorMsg='check if the api is running'/>,
                 document.getElementById('root')
