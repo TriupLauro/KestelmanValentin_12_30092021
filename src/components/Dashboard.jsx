@@ -6,31 +6,13 @@ import RadarActivityType from "./RadarActivityType";
 import ScoreRadial from "./ScoreRadial";
 import PropTypes from "prop-types";
 import {numberBetweenZeroAndOne} from "../utils/utils";
+import LoadingSkeleton from "./LoadingSkeleton";
 
 class Dashboard extends Component {
     render() {
         return(
             this.props.loading ?
-                <div className="mt-t-dboard ml-l-dboard animate-pulse">
-                    <div className="bg-subdued w-nutri-bg h-nutri-bg"> </div>
-                    <div className="bg-subduedw-nutri-bg h-nutri-bg"> </div>
-                    <div className="flex">
-                        <div>
-                            <div className="bg-subdued w-nutri-bg h-nutri-bg"> </div>
-                            <div className="flex">
-                                <div className="bg-subdued w-nutri-bg h-nutri-bg"> </div>
-                                <div className="bg-subdued w-nutri-bg h-nutri-bg"> </div>
-                                <div className="bg-subdued w-nutri-bg h-nutri-bg"> </div>
-                            </div>
-                        </div>
-                        <div className="ml-8">
-                            <div className="bg-subdued w-nutri-bg h-nutri-bg"> </div>
-                            <div className="bg-subdued w-nutri-bg h-nutri-bg"> </div>
-                            <div className="bg-subdued w-nutri-bg h-nutri-bg"> </div>
-                            <div className="bg-subdued w-nutri-bg h-nutri-bg"> </div>
-                        </div>
-                    </div>
-                </div>
+                <LoadingSkeleton />
                 :
                 <div className="mt-t-dboard ml-l-dboard">
                     <div className="text-5xl">Bonjour <span className="text-highlight">{this.props.firstName}</span></div>
@@ -57,9 +39,9 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = {
-    loading : PropTypes.bool,
+    loading : PropTypes.bool.isRequired,
 
-    firstName : PropTypes.string.isRequired,
+    firstName : PropTypes.string,
 
     activityData : PropTypes.arrayOf(PropTypes.shape({
         day : PropTypes.string,
