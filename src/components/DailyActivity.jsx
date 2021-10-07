@@ -3,6 +3,12 @@ import {BarChart, Bar, XAxis, YAxis, Legend, Tooltip, CartesianGrid} from "recha
 import {BarChartLegend} from "../constants/GraphLegends";
 import PropTypes from "prop-types";
 
+/**
+ * Component for showing the daily activity of the user as a Bar Chart.
+ * The data displayed is the weight of the user and the calories burned day after day.
+ *
+ * @component
+ */
 class DailyActivity extends Component {
     render() {
         return (
@@ -35,6 +41,10 @@ class DailyActivity extends Component {
     }
 }
 
+/**
+ * The component used as a custom tooltip for the daily activity chart.
+ * @component
+ */
 class DailyActivityTooltip extends Component {
     render() {
         return(
@@ -49,10 +59,34 @@ class DailyActivityTooltip extends Component {
 
 DailyActivity.propTypes = {
     data : PropTypes.arrayOf(PropTypes.shape({
+        /**
+         * The day of the measurement
+         */
         day : PropTypes.string,
+        /**
+         * The weight of the user on said day
+         */
         kilogram : PropTypes.number,
+        /**
+         * The calories burned by the user on said day
+         */
         calories : PropTypes.number
     }))
+}
+
+
+DailyActivity.defaultProps = {
+    sessions : [
+        {
+            day: '2020-07-01',
+            kilogram: 80,
+            calories: 240
+        },{
+            day: '2020-07-02',
+            kilogram: 79,
+            calories: 320
+        }
+    ]
 }
 
 export default DailyActivity

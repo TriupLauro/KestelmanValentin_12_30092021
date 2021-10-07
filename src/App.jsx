@@ -18,14 +18,13 @@ class App extends Component {
                         <Dashboard
                             loading={this.props.loading}
                             firstName={this.props.mainData.userInfos.firstName}
-                            nutritionData={this.props.mainData.keyData}
+                            nutritionData={this.props.keyData}
                             activityData={this.props.activityData.sessions}
                             averageSessionsData={this.props.averageSessionsData.sessions}
                             activityType={this.props.activityTypeData}
                             scoreData={this.props.scoreData}
                         />
                     }
-
                 </div>
             </>
         )
@@ -75,6 +74,13 @@ App.propTypes = {
             value : PropTypes.number,
             kind : PropTypes.number
         }))
+    }),
+
+    keyData : PropTypes.shape({
+        calorieCount: PropTypes.number.isRequired,
+        proteinCount: PropTypes.number.isRequired,
+        carbohydrateCount: PropTypes.number.isRequired,
+        lipidCount: PropTypes.number.isRequired
     }),
 
     scoreData : numberBetweenZeroAndOne

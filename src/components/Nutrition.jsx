@@ -2,6 +2,11 @@ import {Component} from "react";
 import {NutritionDetails} from "../constants/NutritionDetails";
 import PropTypes from "prop-types";
 
+/**
+ * Component for showing the nutrition details of the user
+ *
+ * @component
+ */
 class Nutrition extends Component {
     constructor(props) {
         super(props);
@@ -28,8 +33,19 @@ class Nutrition extends Component {
 }
 
 Nutrition.propTypes = {
+    /**
+     * The type of displayed nutrition data
+     */
     type : PropTypes.oneOf(["calories","proteins","carbs","lipids"]).isRequired,
+    /**
+     * The amount ingested by the user
+     */
     value : PropTypes.number.isRequired
+}
+
+Nutrition.defaultProps = {
+    type : 'carbs',
+    value : 100
 }
 
 export default Nutrition
