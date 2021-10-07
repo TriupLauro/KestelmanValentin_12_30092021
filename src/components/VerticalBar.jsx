@@ -4,6 +4,10 @@ import Swim from "../assets/Swim";
 import Bike from "../assets/Bike";
 import Dumbbell from "../assets/Dumbbell";
 
+/**
+ * The vertical bar at the left of the interface. Display various icons (Svg as React component thanks to SvgR)
+ * @component
+ */
 class VerticalBar extends Component {
     render() {
         return (

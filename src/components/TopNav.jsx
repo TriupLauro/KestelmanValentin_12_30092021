@@ -1,6 +1,10 @@
 import {Component} from "react";
 import SvgSportseeLogo from "../assets/SportseeLogo";
 
+/**
+ * The top navigation bar with the SportSee logo (an Svg turned react component thanks to Svgr)
+ * @Component
+ */
 class TopNav extends Component {
     render() {
         return (

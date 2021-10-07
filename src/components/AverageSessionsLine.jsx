@@ -2,6 +2,10 @@ import {Component} from "react";
 import {Line, LineChart, Rectangle, Tooltip, XAxis} from "recharts";
 import PropTypes from "prop-types";
 
+/**
+ * Component for displaying the length of the average physical activity session of the user as a line chart.
+ * @component
+ */
 class AverageSessionsLine extends Component {
     render() {
         return (
@@ -31,6 +35,12 @@ class AverageSessionsLine extends Component {
     }
 }
 
+/**
+ * Component used as a custom cursor for the sessions line chart.
+ * Darken starting at the hovered point until the end (right) of the chart.
+ * Also add a second circle around the hovered point.
+ * @component
+ */
 class CustomCursor extends Component {
     render() {
         const startX = this.props.points[0]?.x
@@ -46,6 +56,11 @@ class CustomCursor extends Component {
     }
 }
 
+/**
+ * Component used as a custom tooltip for the sessions line chart.
+ * Only displays the hovered point sessions length in minutes
+ * @component
+ */
 class CustomContentAverage extends Component {
     render() {
         if (!this.props.active) return null
@@ -59,9 +74,32 @@ class CustomContentAverage extends Component {
 
 AverageSessionsLine.propTypes = {
     data : PropTypes.arrayOf(PropTypes.shape({
+        /**
+         * The day of the measurement
+         */
         day : PropTypes.number,
+        /**
+         * The average length session for the said day
+         */
         sessionLength : PropTypes.number
     }))
+}
+
+AverageSessionsLine.defaultProps = {
+    sessions: [
+        {
+            day: 1,
+            sessionLength: 30
+        },
+        {
+            day: 2,
+            sessionLength: 40
+        },
+        {
+            day: 3,
+            sessionLength: 50
+        }
+    ]
 }
 
 export default AverageSessionsLine

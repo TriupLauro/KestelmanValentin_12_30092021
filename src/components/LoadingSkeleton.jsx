@@ -1,5 +1,9 @@
 import {Component} from "react";
 
+/**
+ * The loading skeleton of the graphical interface while the data is loading
+ * @component
+ */
 class LoadingSkeleton extends Component {
     render() {
         return (

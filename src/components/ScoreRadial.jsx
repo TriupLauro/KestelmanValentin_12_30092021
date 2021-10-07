@@ -2,6 +2,11 @@ import {Component} from "react";
 import {RadialBar, RadialBarChart} from "recharts";
 import {numberBetweenZeroAndOne} from "../utils/utils";
 
+/**
+ * The component used to display the daily score of the user as an arc
+ * The score will also be displayed as a percentage
+ * @component
+ */
 class ScoreRadial extends Component {
     render() {
         return (
@@ -37,6 +42,9 @@ class ScoreRadial extends Component {
 }
 
 ScoreRadial.propTypes = {
+    /**
+     * The actual daily score
+     */
     data : numberBetweenZeroAndOne
 }
 
