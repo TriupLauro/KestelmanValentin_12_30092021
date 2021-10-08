@@ -51,10 +51,13 @@ module.exports = {
             },
             inset : {
                 '1/10' : '10%',
-                'center-score' : '7%'
+                'copy' : '12%',
+                'center-score' : '7%',
+                'score-percent': '27%'
             },
             translate : {
-                'score-bg' : '-41.5%'
+                'score-bg' : '-41.5%',
+                'score-percent' : '-37%'
             }
         },
     },

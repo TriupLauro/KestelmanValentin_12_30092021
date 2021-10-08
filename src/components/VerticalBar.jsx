@@ -18,7 +18,7 @@ class VerticalBar extends Component {
                     <button className="w-16 h-16 bg-white rounded-md mb-5"><Bike /></button>
                     <button className="w-16 h-16 bg-white rounded-md"><Dumbbell /></button>
                 </nav>
-                <div className="text-white text-sm absolute bottom-40 w-max transform -rotate-90">Copiryght, SportSee 2020</div>
+                <div className="text-white text-sm absolute bottom-copy w-max transform -rotate-90">Copiryght, SportSee 2020</div>
             </div>
         )
 

@@ -13,7 +13,7 @@ class ScoreRadial extends Component {
             <div className="relative w-1/3">
                 <div className="w-11/12 ml-auto">
                     <div className="absolute top-center-score left-7 text-black z-10 text-score-title">Score</div>
-                    <div className="absolute z-20 top-1/2 left-1/2 m-auto text-center w-24 h-3/5 transform -translate-x-1/3 -translate-y-1/3">
+                    <div className="absolute z-20 top-1/2 left-1/2 m-auto text-center w-24 h-3/5 transform -translate-center-score -translate-y-1/3 translate-x-score-percent">
                         <span className="text-score-percent font-bold">{this.props.data * 100} %</span>
                         <br />
                         <span className="text-subdued text-score-percent">de votre objectif</span>

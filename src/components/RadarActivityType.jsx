@@ -34,11 +34,11 @@ class RadarActivityType extends Component {
                         className="bg-radar rounded-md mr-7"
                         margin={{top:20,right:20,bottom:20,left:20}}
                     >
-                        <Radar dataKey="value" fill="#FF0101F2"/>
+                        <Radar dataKey="value" fill="#FF0101F2" />
                         <PolarGrid />
-                        <PolarAngleAxis dataKey="kind"
+                        <PolarAngleAxis dataKey="kind" axisLine={true}
                                         tickFormatter={tick => this.frenchLabels[tick]}
-                                        stroke="white" fontSize={12} tickLine={false}
+                                        stroke="white" fontSize='0.64vw' tickLine={false}
                         />
                     </RadarChart>
                 </ResponsiveContainer>

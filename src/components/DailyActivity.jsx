@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 class DailyActivity extends Component {
     render() {
         return (
-            <div className='relative bg-light rounded-md h-graphs mb-5'>
+            <div className='relative bg-light rounded-md h-graphs'>
                 <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal'>Activité quotidienne</div>
                 <ResponsiveContainer width="100%" aspect={2.6}>
                     <BarChart

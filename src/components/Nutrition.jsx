@@ -20,10 +20,10 @@ class Nutrition extends Component {
     render() {
         return (
             <div className="flex w-nutri-bg h-nutri-bg bg-light rounded-md items-center justify-around">
-                <div className={`bg-${this.bgc} w-nutri-icon h-nutri-icon flex rounded-md`}>
+                <div className={`bg-${this.bgc} w-nutri-icon h-nutri-icon flex rounded-md ml-7`}>
                     {this.icon}
                 </div>
-                <div>
+                <div className="mr-auto ml-6">
                     <div className="text-nutri-value font-bold">{this.props.value}{this.unit}</div>
                     <div className="text-subdued text-sm font-medium">{this.name}</div>
                 </div>

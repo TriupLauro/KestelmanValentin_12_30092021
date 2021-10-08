@@ -20,7 +20,7 @@ class Dashboard extends Component {
                     <div className="flex mt-t-main">
                         <div className="w-8/12 h-1/2 flex flex-col">
                             <DailyActivity data={this.props.activityData}/>
-                            <div className="flex">
+                            <div className="flex mt-10">
                                 <AverageSessionsLine data={this.props.averageSessionsData} />
                                 <RadarActivityType data={this.props.activityType} />
                                 <ScoreRadial data={this.props.scoreData} />
