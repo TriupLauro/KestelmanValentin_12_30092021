@@ -27,24 +27,34 @@ module.exports = {
                 sm : '0.75rem',
                 'nutri-value' : '1.25rem',
                 'bar-legend' : '0.875rem',
-                'score-percent' : '1.625rem'
+                'score-percent' : '100%',
+                'score-title' : '1.5vw'
             },
             height: {
                 md: '5.625rem',
                 full : '100%',
-                'nutri-bg' : '7.75rem',
-                'nutri-icon' : '3.75rem'
+                'nutri-bg' : '8vw',
+                'nutri-icon' : '3.75rem',
+                'graphs' : '21vw'
             },
             lineHeight: {
                 'top-nav': '5.625rem'
             },
             width : {
                 'left-bar': '7.375rem',
-                'nutri-bg' : '16.25rem',
-                'nutri-icon' : '3.75rem'
+                'nutri-bg' : '20vw',
+                'nutri-icon' : '3.75rem',
+                'dashboard' : 'calc(100vw - theme("width.left-bar") - theme("spacing.l-dboard"))'
             },
             margin : {
                 '-v-bar' : '-5.625rem'
+            },
+            inset : {
+                '1/10' : '10%',
+                'center-score' : '7%'
+            },
+            translate : {
+                'score-bg' : '-41.5%'
             }
         },
     },

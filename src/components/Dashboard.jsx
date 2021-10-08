@@ -14,19 +14,19 @@ class Dashboard extends Component {
             this.props.loading ?
                 <LoadingSkeleton />
                 :
-                <div className="mt-t-dboard ml-l-dboard">
+                <div className="mt-t-dboard ml-l-dboard w-dashboard">
                     <div className="text-5xl">Bonjour <span className="text-highlight">{this.props.firstName}</span></div>
                     <div className="mt-t-record text-lg">Félicitation ! Vous avez explosé vos objectifs hier 👏</div>
                     <div className="flex mt-t-main">
-                        <div>
+                        <div className="w-8/12 h-1/2 flex flex-col">
                             <DailyActivity data={this.props.activityData}/>
-                            <div className="flex mt-7">
+                            <div className="flex">
                                 <AverageSessionsLine data={this.props.averageSessionsData} />
                                 <RadarActivityType data={this.props.activityType} />
                                 <ScoreRadial data={this.props.scoreData} />
                             </div>
                         </div>
-                        <div className="ml-8">
+                        <div className="ml-8 flex flex-col justify-between">
                             <Nutrition type="calories" value={this.props.nutritionData.calorieCount}/>
                             <Nutrition type ="proteins" value={this.props.nutritionData.proteinCount}/>
                             <Nutrition type="carbs" value={this.props.nutritionData.carbohydrateCount}/>

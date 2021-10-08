@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {PolarAngleAxis, PolarGrid, Radar, RadarChart} from "recharts";
+import {PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer} from "recharts";
 import PropTypes from "prop-types";
 
 /**
@@ -25,21 +25,23 @@ class RadarActivityType extends Component {
 
     render() {
         return (
-            <div>
-                <RadarChart
-                    width={258}
-                    height={263}
-                    data={this.props.data.data}
-                    className="bg-radar rounded-md mr-7"
-                    margin={{top:20,right:20,bottom:20,left:20}}
-                >
-                    <Radar dataKey="value" fill="#FF0101F2"/>
-                    <PolarGrid />
-                    <PolarAngleAxis dataKey="kind"
-                                    tickFormatter={tick => this.frenchLabels[tick]}
-                                    stroke="white" fontSize={12} tickLine={false}
-                    />
-                </RadarChart>
+            <div className="w-1/3">
+                <ResponsiveContainer width="90%" aspect={1} className="m-auto">
+                    <RadarChart
+                        width={258}
+                        height={263}
+                        data={this.props.data.data}
+                        className="bg-radar rounded-md mr-7"
+                        margin={{top:20,right:20,bottom:20,left:20}}
+                    >
+                        <Radar dataKey="value" fill="#FF0101F2"/>
+                        <PolarGrid />
+                        <PolarAngleAxis dataKey="kind"
+                                        tickFormatter={tick => this.frenchLabels[tick]}
+                                        stroke="white" fontSize={12} tickLine={false}
+                        />
+                    </RadarChart>
+                </ResponsiveContainer>
             </div>
         )
     }

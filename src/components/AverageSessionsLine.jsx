@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Line, LineChart, Rectangle, Tooltip, XAxis} from "recharts";
+import {Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis} from "recharts";
 import PropTypes from "prop-types";
 
 /**
@@ -9,27 +9,27 @@ import PropTypes from "prop-types";
 class AverageSessionsLine extends Component {
     render() {
         return (
-            <div className="relative">
-                <div className="absolute top-7 left-8 z-10 w-36 text-white opacity-50">Durée moyenne des sessions</div>
-                <LineChart
-                    data={this.props.data}
-                    width={258}
-                    height={263}
-                    border={5}
-                    className="bg-highlight rounded-md mr-7"
-                    margin={{top:75, left:15, right:15, bottom: 10}}
-                >
-                    <XAxis dataKey="day"
-                           tickLine={false}
-                           axisLine={false}
-                           stroke="#FFFFFF"
-                    />
-                    <Line dataKey="sessionLength" stroke="#FFFFFF"
-                          dot={false}
-                          type="natural"
-                    />
-                    <Tooltip cursor={<CustomCursor />} content={<CustomContentAverage />}/>
-                </LineChart>
+            <div className="relative w-1/3">
+                <div className="absolute top-1/10 left-1/10 z-10 w-36 text-white opacity-50">Durée moyenne des sessions</div>
+                <ResponsiveContainer width="90%" aspect={1}>
+                    <LineChart
+                        data={this.props.data}
+                        border={5}
+                        className="bg-highlight rounded-md mr-7"
+                        margin={{top:75, left:15, right:15, bottom: 10}}
+                    >
+                        <XAxis dataKey="day"
+                               tickLine={false}
+                               axisLine={false}
+                               stroke="#FFFFFF"
+                        />
+                        <Line dataKey="sessionLength" stroke="#FFFFFF"
+                              dot={false}
+                              type="natural"
+                        />
+                        <Tooltip cursor={<CustomCursor />} content={<CustomContentAverage />}/>
+                    </LineChart>
+                </ResponsiveContainer>
             </div>
         )
     }

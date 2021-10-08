@@ -19,7 +19,7 @@ class Nutrition extends Component {
 
     render() {
         return (
-            <div className="flex w-nutri-bg h-nutri-bg bg-light mb-10 rounded-md items-center justify-around">
+            <div className="flex w-nutri-bg h-nutri-bg bg-light rounded-md items-center justify-around">
                 <div className={`bg-${this.bgc} w-nutri-icon h-nutri-icon flex rounded-md`}>
                     {this.icon}
                 </div>
