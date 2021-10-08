@@ -46,10 +46,10 @@ class CustomCursor extends Component {
         const startX = this.props.points[0]?.x
         const startY = this.props.points[1].y - (this.props.payload[0].payload.sessionLength / 60) * (this.props.points[1].y - this.props.points[0].y)
         const radius = 10
-        const restWidth = 258 - startX
+        const restWidth = 500 - startX
         return(
             <svg>
-                <Rectangle x={startX} y={0} height={263} width={restWidth} fill="black" opacity={0.2} radius={[0,6,6,0]}/>
+                <Rectangle x={startX} y={0} height={500} width={restWidth} fill="black" opacity={0.2} radius={[0,6,6,0]}/>
                 <circle cx={startX} cy={startY} r={radius} fill="white" opacity={0.2} />
             </svg>
         )
@@ -86,7 +86,7 @@ AverageSessionsLine.propTypes = {
 }
 
 AverageSessionsLine.defaultProps = {
-    sessions: [
+    data: [
         {
             day: 1,
             sessionLength: 30
