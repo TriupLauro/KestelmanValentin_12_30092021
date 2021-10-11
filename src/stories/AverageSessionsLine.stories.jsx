@@ -4,7 +4,7 @@ import AverageSessionsLine from "../components/AverageSessionsLine";
 
 export default {
     title : 'Components/AverageSessionLine',
-    components : AverageSessionsLine
+    component : AverageSessionsLine
 }
 
 export const Example = (args) => <AverageSessionsLine {...args}/>
