@@ -39,7 +39,7 @@ class RadarActivityType extends Component {
      * @param {number} index Index of the data in the starting array
      * @param {number} rotation How many indexes each item in the array should be rotated
      * @param {number} length Length of the starting array
-     * @returns {*|number} The new index in the rotated array
+     * @returns {number} The new index in the rotated array
      */
     rotatedIndex(index,rotation,length) {
         return (rotation + index)%length
@@ -83,7 +83,11 @@ RadarActivityType.propTypes = {
             kind : PropTypes.number
         }))
     }),
-    rotation : PropTypes.number
+    rotation : PropTypes.number.isRequired
+}
+
+RadarActivityType.defaultProps = {
+    rotation : 5
 }
 
 export default RadarActivityType
