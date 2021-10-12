@@ -1,6 +1,8 @@
 import {Component} from "react";
 import {PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer} from "recharts";
 import PropTypes from "prop-types";
+import {acquireUserActivityType} from "../../index";
+import ErrorDisplay from "./ErrorDisplay";
 
 /**
  * Component used to display the type of physical activity of the user as a radar chart.
@@ -20,6 +22,11 @@ class RadarActivityType extends Component {
             4 : 'Force',
             5 : 'Vitesse',
             6 : 'Intensité'
+        }
+        this.state = {
+            isLoading : true,
+            error: false,
+            data : {}
         }
     }
 
@@ -45,14 +52,50 @@ class RadarActivityType extends Component {
         return (rotation + index)%length
     }
 
+    componentDidMount() {
+        acquireUserActivityType(this.props.id)
+            .then(responseData => {
+                this.setState({isLoading : false, data : responseData.data.data})
+            })
+            .catch(error => {
+                if (error.response) {
+                    this.setState({isLoading: false, error: error.response.data})
+                }else{
+                    this.setState({isLoading: false, error: 'Is the API running ?'})
+                }
+            })
+    }
+
     render() {
+        if (this.state.isLoading) {
+            return (
+                <div className="w-1/3 h-full">
+                    <div className="w-11/12 h-full m-auto bg-subdued animate-pulse rounded-md flex">
+                        <div className="m-auto">
+                            Chargement...
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+        if (this.state.error) {
+            return (
+                <div className="w-1/3 h-full">
+                    <div className="w-11/12 h-full m-auto bg-subdued rounded-md flex">
+                        <ErrorDisplay errorMsg={this.state.error} />
+                    </div>
+                </div>
+            )
+        }
+
         return (
             <div className="w-1/3">
                 <ResponsiveContainer width="90%" aspect={1} className="m-auto">
                     <RadarChart
                         width={258}
                         height={263}
-                        data={this.rotateData(this.props.data.data,this.props.rotation)}
+                        data={this.rotateData(this.props?.data?.data ?? this.state.data.data ,this.props.rotation)}
                         className="bg-radar rounded-md mr-7"
                         margin={{top:20,right:20,bottom:20,left:20}}
                     >
@@ -70,6 +113,9 @@ class RadarActivityType extends Component {
 }
 
 RadarActivityType.propTypes = {
+    /**
+     * Used for a customized mock - used by storybook
+     */
     data :  PropTypes.shape({
         userId : PropTypes.number.isRequired,
         data : PropTypes.arrayOf(PropTypes.shape({
@@ -83,7 +129,8 @@ RadarActivityType.propTypes = {
             kind : PropTypes.number
         }))
     }),
-    rotation : PropTypes.number.isRequired
+    rotation : PropTypes.number.isRequired,
+    id : PropTypes.number
 }
 
 RadarActivityType.defaultProps = {

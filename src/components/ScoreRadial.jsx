@@ -93,7 +93,7 @@ class ScoreRadial extends Component {
 
 ScoreRadial.propTypes = {
     /**
-     * The actual daily score
+     * Daily score customized mock - used by storybook
      */
     data : numberBetweenZeroAndOne,
     id : PropTypes.number

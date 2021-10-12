@@ -99,5 +99,7 @@ export const getAllData = id => {
 export {
     getUserActivity,
     getUserScore,
-    manageError
+    manageError,
+    getUserAverageSessions,
+    getUserActivityType
 }

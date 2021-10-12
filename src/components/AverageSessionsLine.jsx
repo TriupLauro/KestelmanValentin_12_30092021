@@ -1,19 +1,64 @@
 import {Component} from "react";
 import {Line, LineChart, Rectangle, ResponsiveContainer, Tooltip, XAxis} from "recharts";
 import PropTypes from "prop-types";
+import {acquireUserAverageSessions} from "../../index";
+import ErrorDisplay from "./ErrorDisplay";
 
 /**
  * Component for displaying the length of the average physical activity session of the user as a line chart.
  * @component
  */
 class AverageSessionsLine extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading : true,
+            error : false,
+            data : {}
+        }
+    }
+
+    componentDidMount() {
+        acquireUserAverageSessions(this.props.id)
+            .then(responseData => {
+                this.setState({isLoading : false, data : responseData.data.data})
+            })
+            .catch(error => {
+                if (error.response) {
+                    this.setState({isLoading: false, error: error.response.data})
+                }else{
+                    this.setState({isLoading: false, error: 'Is the API running ?'})
+                }
+            })
+    }
+
     render() {
+        if (this.state.isLoading) {
+            return (
+                <div className="w-1/3 h-full">
+                    <div className="w-11/12 bg-subdued animate-pulse rounded-md h-full flex">
+                        <div className="m-auto">Chargement...</div>
+                    </div>
+                </div>
+            )
+        }
+
+        if (this.state.error) {
+            return (
+                <div className="w-1/3 h-full">
+                    <div className="w-11/12 bg-subdued rounded-md h-full flex">
+                        <ErrorDisplay errorMsg={this.state.error} />
+                    </div>
+                </div>
+            )
+        }
+
         return (
             <div className="relative w-1/3">
                 <div className="absolute top-1/10 left-1/10 z-10 w-36 text-white opacity-50">Durée moyenne des sessions</div>
                 <ResponsiveContainer width="90%" aspect={1}>
                     <LineChart
-                        data={this.props.data}
+                        data={this.props.data ?? this.state.data.sessions}
                         border={5}
                         className="bg-highlight rounded-md mr-7"
                         margin={{top:75, left:15, right:15, bottom: 10}}
@@ -73,6 +118,9 @@ class CustomContentAverage extends Component {
 }
 
 AverageSessionsLine.propTypes = {
+    /**
+     * Customized mock data - used by the storybook
+     */
     data : PropTypes.arrayOf(PropTypes.shape({
         /**
          * The day of the measurement
@@ -82,24 +130,8 @@ AverageSessionsLine.propTypes = {
          * The average length session for the said day
          */
         sessionLength : PropTypes.number
-    }))
-}
-
-AverageSessionsLine.defaultProps = {
-    data: [
-        {
-            day: 1,
-            sessionLength: 30
-        },
-        {
-            day: 2,
-            sessionLength: 40
-        },
-        {
-            day: 3,
-            sessionLength: 50
-        }
-    ]
+    })),
+    id : PropTypes.number
 }
 
 export default AverageSessionsLine

@@ -3,7 +3,7 @@ import {BarChart, Bar, XAxis, YAxis, Legend, Tooltip, CartesianGrid, ResponsiveC
 import {BarChartLegend} from "../constants/GraphLegends";
 import DailyActivityTooltip from "./DailyActivityTooltip";
 import PropTypes from "prop-types";
-import {acquireUserActivityData} from "../../index";
+import {acquireUserActivity} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 
 /**
@@ -23,11 +23,12 @@ class DailyActivity extends Component {
     }
 
     componentDidMount() {
-        acquireUserActivityData(this.props.id)
+        acquireUserActivity(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data.sessions})
             })
             .catch(error => {
+                console.log(error)
                 if (error.response) {
                     this.setState({isLoading: false, error: error.response.data})
                 }else{

@@ -274,13 +274,12 @@ const mockUserActivity = id => {
     return new Promise ((resolve, reject) => {
         const data = {
             data : {
-                data : {
-                    sessions : USER_ACTIVITY.find(mock => mock.userId === id)?.sessions
-                }
+                data :
+                    USER_ACTIVITY.find(mock => mock.userId === id)
             }
         }
 
-        data.data.data.sessions ? resolve(data) : reject(errorObject(id))
+        data.data?.data?.sessions ? resolve(data) : reject(errorObject(id))
     })
 }
 
@@ -297,12 +296,38 @@ const mockUserScore = id => {
     })
 }
 
+const mockUserAverageSessions = id => {
+    return new Promise((resolve, reject) => {
+        const data = {
+            data : {
+                data : USER_AVERAGE_SESSIONS.find(mock => mock.userId === id)
+            }
+        }
+
+        data.data.data ? resolve(data) : reject(errorObject(id))
+    })
+}
+
+const mockUserActivityType = id => {
+    return new Promise((resolve, reject) => {
+        const data = {
+            data : {
+                data : USER_PERFORMANCE.find(mock => mock.userId === id)
+            }
+        }
+
+        data.data.data ? resolve(data) : reject(errorObject(id))
+    })
+}
+
 export {
     USER_MAIN_DATA,
     USER_ACTIVITY,
     USER_AVERAGE_SESSIONS,
     USER_PERFORMANCE,
     mockUserActivity,
-    mockUserScore
+    mockUserScore,
+    mockUserAverageSessions,
+    mockUserActivityType
 }
 
