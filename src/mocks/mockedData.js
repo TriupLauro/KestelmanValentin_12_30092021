@@ -270,6 +270,18 @@ const errorObject = id => {
     }
 }
 
+const mockMainUserData = id => {
+    return new Promise((resolve, reject) => {
+        const data = {
+            data : {
+                data : USER_MAIN_DATA.find(mock => mock.id === id)
+            }
+        }
+
+        data.data.data ? resolve(data) : reject(errorObject(id))
+    })
+}
+
 const mockUserActivity = id => {
     return new Promise ((resolve, reject) => {
         const data = {
@@ -320,6 +332,18 @@ const mockUserActivityType = id => {
     })
 }
 
+const mockUserKeyData = id => {
+    return new Promise((resolve, reject) => {
+        const data = {
+            data : {
+                data : USER_MAIN_DATA.find(mock => mock.id === id)?.keyData
+            }
+        }
+
+        data.data.data ? resolve(data) : reject(errorObject(id))
+    })
+}
+
 export {
     USER_MAIN_DATA,
     USER_ACTIVITY,
@@ -328,6 +352,8 @@ export {
     mockUserActivity,
     mockUserScore,
     mockUserAverageSessions,
-    mockUserActivityType
+    mockUserActivityType,
+    mockMainUserData,
+    mockUserKeyData
 }
 

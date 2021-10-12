@@ -15,24 +15,28 @@ export const NutritionDetails = {
         unit : 'kCal',
         fr : 'Calories',
         bgc : 'calories',
-        icon : SvgFire
+        icon : SvgFire,
+        key : 'calorieCount'
     },
     proteins : {
         unit : 'g',
         fr : 'Protéines',
         bgc : 'proteins',
-        icon : SvgMeat
+        icon : SvgMeat,
+        key : 'proteinCount'
     },
     carbs : {
         unit : 'g',
         fr : 'Glucides',
         bgc : 'carbs',
-        icon : SvgApple
+        icon : SvgApple,
+        key : 'carbohydrateCount'
     },
     lipids : {
         unit: 'g',
         fr : 'Lipides',
         bgc : 'lipids',
-        icon : SvgCheeseburger
+        icon : SvgCheeseburger,
+        key : 'lipidCount'
     }
 }
