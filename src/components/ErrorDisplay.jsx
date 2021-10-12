@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 class ErrorDisplay extends Component {
     render() {
         return (
-            <div>Une erreur est survenue {this.props.errorMsg && `: ${this.props.errorMsg}`}</div>
+            <div className="m-auto">Une erreur est survenue {this.props.errorMsg && `: ${this.props.errorMsg}`}</div>
         )
     }
 }

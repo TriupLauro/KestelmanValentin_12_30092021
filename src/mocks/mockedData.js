@@ -262,10 +262,29 @@ const USER_PERFORMANCE = [
     }
 ]
 
+const mockUserActivity = id => {
+    return new Promise ((resolve, reject) => {
+        const data = {
+            data : {
+                data : {
+                    sessions : USER_ACTIVITY.find(mock => mock.userId === id)?.sessions
+                }
+            }
+        }
+        const error = {
+            response : {
+                data : `can not find user id ${id}`
+            }
+        }
+        data.data.data.sessions ? resolve(data) : reject(error)
+    })
+}
+
 export {
     USER_MAIN_DATA,
     USER_ACTIVITY,
     USER_AVERAGE_SESSIONS,
-    USER_PERFORMANCE
+    USER_PERFORMANCE,
+    mockUserActivity
 }
 

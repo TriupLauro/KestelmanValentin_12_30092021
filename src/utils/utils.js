@@ -87,3 +87,7 @@ export const getAllData = id => {
         getUserKeyData(id)
     ])
 }
+
+export {
+    getUserActivity
+}

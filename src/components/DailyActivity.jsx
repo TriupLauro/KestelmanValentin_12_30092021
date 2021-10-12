@@ -1,7 +1,10 @@
 import {Component} from "react";
 import {BarChart, Bar, XAxis, YAxis, Legend, Tooltip, CartesianGrid, ResponsiveContainer} from "recharts";
 import {BarChartLegend} from "../constants/GraphLegends";
+import DailyActivityTooltip from "./DailyActivityTooltip";
 import PropTypes from "prop-types";
+import {acquireUserActivityData} from "../../index";
+import ErrorDisplay from "./ErrorDisplay";
 
 /**
  * Component for showing the daily activity of the user as a Bar Chart.
@@ -10,13 +13,50 @@ import PropTypes from "prop-types";
  * @component
  */
 class DailyActivity extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading : true,
+            error : false,
+            data : []
+        }
+    }
+
+    componentDidMount() {
+        acquireUserActivityData(this.props.id)
+            .then(responseData => {
+                console.log(responseData)
+                this.setState({isLoading : false, data : responseData.data.data.sessions})
+            }).catch(error => {
+                if (error.response) {
+                    this.setState({isLoading: false, error: error.response.data})
+                }
+        })
+    }
+
     render() {
+        if (this.state.error) {
+            return (
+                <div className='relative bg-light rounded-md h-graphs flex'>
+                    <ErrorDisplay errorMsg={this.state.error} />
+                </div>
+            )
+        }
+
+        if (this.state.isLoading) {
+            return (
+                <div className='relative bg-subdued rounded-md h-graphs animate-pulse flex'>
+                    <div className='m-auto'>Chargement...</div>
+                </div>
+            )
+        }
+
         return (
             <div className='relative bg-light rounded-md h-graphs'>
                 <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal'>Activité quotidienne</div>
                 <ResponsiveContainer width="100%" aspect={2.6}>
                     <BarChart
-                        data={this.props.data}
+                        data={this.state.data}
                         margin={{top: 90}}
                     >
                         <Tooltip
@@ -41,21 +81,7 @@ class DailyActivity extends Component {
     }
 }
 
-/**
- * The component used as a custom tooltip for the daily activity chart.
- * @component
- */
-class DailyActivityTooltip extends Component {
-    render() {
-        return(
-            this.props.active &&
-            <ul className="bg-daily-tooltip px-2 text-center">
-                <li className="text-white text-xs py-4">{this.props.payload[0]?.payload.kilogram} kg</li>
-                <li className="text-white text-xs py-4">{this.props.payload[0]?.payload.calories} Kcal</li>
-            </ul>
-        )
-    }
-}
+
 
 DailyActivity.propTypes = {
     data : PropTypes.arrayOf(PropTypes.shape({
@@ -71,7 +97,8 @@ DailyActivity.propTypes = {
          * The calories burned by the user on said day
          */
         calories : PropTypes.number
-    }))
+    })),
+    id : PropTypes.number.isRequired
 }
 
 

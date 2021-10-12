@@ -35,6 +35,7 @@ getAllData(18)
                     activityTypeData={userActivityType}
                     scoreData={userScore}
                     keyData={userKeyData}
+                    id={18}
                 />
             </React.StrictMode>,
             document.getElementById('root')

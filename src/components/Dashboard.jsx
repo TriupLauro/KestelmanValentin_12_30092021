@@ -19,7 +19,7 @@ class Dashboard extends Component {
                     <div className="mt-t-record text-lg">Félicitation ! Vous avez explosé vos objectifs hier 👏</div>
                     <div className="flex mt-t-main">
                         <div className="w-8/12 h-1/2 flex flex-col">
-                            <DailyActivity data={this.props.activityData}/>
+                            <DailyActivity id={this.props.id}/>
                             <div className="flex mt-10">
                                 <AverageSessionsLine data={this.props.averageSessionsData} />
                                 <RadarActivityType data={this.props.activityType} rotation={5}/>
