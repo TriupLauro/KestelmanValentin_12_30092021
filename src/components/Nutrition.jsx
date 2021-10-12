@@ -26,6 +26,10 @@ class Nutrition extends Component {
     }
 
     componentDidMount() {
+        if (this.props.value) {
+            this.setState({isLoading : false, data : this.props.value})
+            return null
+        }
         acquireUserKeyData(this.props.id).then(responseData => {
             this.setState({isLoading : false, data : responseData.data.data[this.key]})
         })
@@ -62,7 +66,7 @@ class Nutrition extends Component {
                     {this.icon}
                 </div>
                 <div className="mr-auto ml-6">
-                    <div className="text-nutri-value font-bold">{this.props.value ?? this.state.data}{this.unit}</div>
+                    <div className="text-nutri-value font-bold">{this.state.data}{this.unit}</div>
                     <div className="text-subdued text-sm font-medium">{this.name}</div>
                 </div>
             </div>
