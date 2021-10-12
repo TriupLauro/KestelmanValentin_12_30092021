@@ -1,43 +1,17 @@
 import {callTheAPI} from "./config";
-import {getUserActivity} from "./src/utils/utils";
-import {mockUserActivity} from "./src/mocks/mockedData";
+import {getUserActivity, getUserScore} from "./src/utils/utils";
+import {mockUserActivity, mockUserScore} from "./src/mocks/mockedData";
 
 const acquireUserActivityData = id => {
     return callTheAPI ? getUserActivity(id) : mockUserActivity(id)
 }
 
-const manageUserActivityData = id => {
-    let isLoading = true
-    let isError = false
-    let data = []
-    acquireUserActivityData(id)
-        .then(responseData => {
-            isLoading = false
-            data = responseData
-            return {
-                isLoading,
-                isError,
-                data
-            }
-        })
-        .catch(error => {
-            isLoading = false
-            isError = error
-            return {
-                isLoading,
-                isError,
-                data
-            }
-        })
-    return {
-        isLoading,
-        isError,
-        data
-    }
+const acquireUserScore = id => {
+    return callTheAPI ? getUserScore(id) : mockUserScore(id)
 }
 
 export {
-    manageUserActivityData,
-    acquireUserActivityData
+    acquireUserActivityData,
+    acquireUserScore
 }
 

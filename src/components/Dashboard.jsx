@@ -20,10 +20,10 @@ class Dashboard extends Component {
                     <div className="flex mt-t-main">
                         <div className="w-8/12 h-1/2 flex flex-col">
                             <DailyActivity id={this.props.id}/>
-                            <div className="flex mt-10">
+                            <div className="flex mt-10 h-subgraphs">
                                 <AverageSessionsLine data={this.props.averageSessionsData} />
                                 <RadarActivityType data={this.props.activityType} rotation={5}/>
-                                <ScoreRadial data={this.props.scoreData} />
+                                <ScoreRadial id={this.props.id}/>
                             </div>
                         </div>
                         <div className="ml-8 flex flex-col justify-between">

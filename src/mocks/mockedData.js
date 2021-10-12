@@ -262,6 +262,14 @@ const USER_PERFORMANCE = [
     }
 ]
 
+const errorObject = id => {
+    return {
+        response : {
+            data : `can not find user id ${id}`
+        }
+    }
+}
+
 const mockUserActivity = id => {
     return new Promise ((resolve, reject) => {
         const data = {
@@ -271,12 +279,21 @@ const mockUserActivity = id => {
                 }
             }
         }
-        const error = {
-            response : {
-                data : `can not find user id ${id}`
+
+        data.data.data.sessions ? resolve(data) : reject(errorObject(id))
+    })
+}
+
+const mockUserScore = id => {
+    return new Promise ((resolve, reject) => {
+        const data = {
+            data : {
+                data :
+                    USER_MAIN_DATA.find(mock => mock.id === id)?.todayScore
             }
         }
-        data.data.data.sessions ? resolve(data) : reject(error)
+
+        data.data.data ? resolve(data) : reject(errorObject(id))
     })
 }
 
@@ -285,6 +302,7 @@ export {
     USER_ACTIVITY,
     USER_AVERAGE_SESSIONS,
     USER_PERFORMANCE,
-    mockUserActivity
+    mockUserActivity,
+    mockUserScore
 }
 

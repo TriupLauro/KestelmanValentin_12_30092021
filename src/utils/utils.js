@@ -16,6 +16,14 @@ export const numberBetweenZeroAndOne = (props, propName, componentName) => {
     }
 }
 
+const manageError = error => {
+    if (error.response) {
+        this.setState({isLoading: false, error: error.response.data})
+    }else{
+        this.setState({isLoading: false, error: 'Is the API running ?'})
+    }
+}
+
 /**
  * Gets the main data of the user, which id is specified, from the API. The API must be running.
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
@@ -89,5 +97,7 @@ export const getAllData = id => {
 }
 
 export {
-    getUserActivity
+    getUserActivity,
+    getUserScore,
+    manageError
 }

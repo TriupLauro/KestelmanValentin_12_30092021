@@ -25,11 +25,13 @@ class DailyActivity extends Component {
     componentDidMount() {
         acquireUserActivityData(this.props.id)
             .then(responseData => {
-                console.log(responseData)
                 this.setState({isLoading : false, data : responseData.data.data.sessions})
-            }).catch(error => {
+            })
+            .catch(error => {
                 if (error.response) {
                     this.setState({isLoading: false, error: error.response.data})
+                }else{
+                    this.setState({isLoading: false, error: 'Is the API running ?'})
                 }
         })
     }
@@ -56,7 +58,7 @@ class DailyActivity extends Component {
                 <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal'>Activité quotidienne</div>
                 <ResponsiveContainer width="100%" aspect={2.6}>
                     <BarChart
-                        data={this.state.data}
+                        data={this.props.data ?? this.state.data}
                         margin={{top: 90}}
                     >
                         <Tooltip
@@ -84,6 +86,9 @@ class DailyActivity extends Component {
 
 
 DailyActivity.propTypes = {
+    /**
+     * The data for a customized mock
+     */
     data : PropTypes.arrayOf(PropTypes.shape({
         /**
          * The day of the measurement

@@ -35,7 +35,8 @@ module.exports = {
                 full : '100%',
                 'nutri-bg' : '8vw',
                 'nutri-icon' : '3.75rem',
-                'graphs' : '21vw'
+                'graphs' : '21vw',
+                'subgraphs' : '16.7vw'
             },
             lineHeight: {
                 'top-nav': '5.625rem'
