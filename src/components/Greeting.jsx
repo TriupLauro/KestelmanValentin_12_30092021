@@ -1,6 +1,7 @@
 import {Component} from "react";
 import {acquireMainUserData} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
+import PropTypes from "prop-types";
 
 class Greeting extends Component {
     constructor(props) {
@@ -49,6 +50,13 @@ class Greeting extends Component {
             </div>
         )
     }
+}
+
+Greeting.propTypes = {
+    /**
+     * The unique id of the user - used to acquire to correct data from the API or the mocked data
+     */
+    id : PropTypes.number.isRequired
 }
 
 export default Greeting

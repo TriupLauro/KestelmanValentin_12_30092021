@@ -66,7 +66,7 @@ class Nutrition extends Component {
                     {this.icon}
                 </div>
                 <div className="mr-auto ml-6">
-                    <div className="text-nutri-value font-bold">{this.state.data}{this.unit}</div>
+                    <div className="text-nutri-value font-bold">{this.props.value ?? this.state.data}{this.unit}</div>
                     <div className="text-subdued text-sm font-medium">{this.name}</div>
                 </div>
             </div>
@@ -76,7 +76,7 @@ class Nutrition extends Component {
 
 Nutrition.propTypes = {
     /**
-     * The unique id of the user
+     * The unique id of the user - used to acquire to correct data from the API or the mocked data
      */
     id : PropTypes.number,
     /**
@@ -85,6 +85,7 @@ Nutrition.propTypes = {
     type : PropTypes.oneOf(["calories","proteins","carbs","lipids"]).isRequired,
     /**
      * The amount ingested by the user - only used for storybook
+     * If set, the data will not be acquired from the API or the mocked data file
      */
     value : PropTypes.number
 }

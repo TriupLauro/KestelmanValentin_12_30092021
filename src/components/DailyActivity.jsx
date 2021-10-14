@@ -23,6 +23,10 @@ class DailyActivity extends Component {
     }
 
     componentDidMount() {
+        if (this.props.data) {
+            this.setState({isLoading : false, data : this.props.data})
+            return null
+        }
         acquireUserActivity(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data.sessions})
@@ -55,12 +59,13 @@ class DailyActivity extends Component {
         }
 
         return (
-            <div className='relative bg-light rounded-md h-graphs'>
+            <div className='relative'>
                 <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal'>Activité quotidienne</div>
                 <ResponsiveContainer width="100%" aspect={2.6}>
                     <BarChart
                         data={this.props.data ?? this.state.data}
                         margin={{top: 90}}
+                        className='bg-light rounded-md'
                     >
                         <Tooltip
                             content={<DailyActivityTooltip />}
@@ -88,7 +93,8 @@ class DailyActivity extends Component {
 
 DailyActivity.propTypes = {
     /**
-     * The data for a customized mock
+     * The data for a customized mock - used by storybook
+     * If set the data will not be acquired from the API or the mocked data file
      */
     data : PropTypes.arrayOf(PropTypes.shape({
         /**
@@ -104,22 +110,10 @@ DailyActivity.propTypes = {
          */
         calories : PropTypes.number
     })),
+    /**
+     * The unique id of the user - used to acquire to correct data from the API or the mocked data
+     */
     id : PropTypes.number.isRequired
-}
-
-
-DailyActivity.defaultProps = {
-    sessions : [
-        {
-            day: '2020-07-01',
-            kilogram: 80,
-            calories: 240
-        },{
-            day: '2020-07-02',
-            kilogram: 79,
-            calories: 320
-        }
-    ]
 }
 
 export default DailyActivity

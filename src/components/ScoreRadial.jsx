@@ -21,6 +21,10 @@ class ScoreRadial extends Component {
     }
 
     componentDidMount() {
+        if (this.props.data) {
+            this.setState({isLoading: false, data : this.props.data})
+            return null
+        }
         acquireUserScore(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
@@ -71,8 +75,6 @@ class ScoreRadial extends Component {
                                 {name:'max', value:1, fill:"#FFF"},
                                 {name :'Score', value : this.props.data ?? this.state.data, fill:"#FF0000"}
                             ]}
-                            width={258}
-                            height={263}
                             startAngle={90}
                             endAngle={450}
                             barSize={10}
@@ -94,8 +96,12 @@ class ScoreRadial extends Component {
 ScoreRadial.propTypes = {
     /**
      * Daily score customized mock - used by storybook
+     * If set, the data will no be acquired trough the API or the mocked data file
      */
     data : numberBetweenZeroAndOne,
+    /**
+     * The unique id of the user - used to acquire to correct data from the API or the mocked data
+     */
     id : PropTypes.number
 }
 

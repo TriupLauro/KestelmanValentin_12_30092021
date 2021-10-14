@@ -19,6 +19,10 @@ class AverageSessionsLine extends Component {
     }
 
     componentDidMount() {
+        if (this.props.data) {
+            this.setState({isLoading: false, data : this.props.data})
+            return null
+        }
         acquireUserAverageSessions(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
@@ -60,7 +64,7 @@ class AverageSessionsLine extends Component {
                     <LineChart
                         data={this.props.data ?? this.state.data.sessions}
                         border={5}
-                        className="bg-highlight rounded-md mr-7"
+                        className="bg-highlight rounded-md"
                         margin={{top:75, left:15, right:15, bottom: 10}}
                     >
                         <XAxis dataKey="day"
@@ -120,6 +124,7 @@ class CustomContentAverage extends Component {
 AverageSessionsLine.propTypes = {
     /**
      * Customized mock data - used by the storybook
+     * If set, data will not be acquired through the API or the mocked file data
      */
     data : PropTypes.arrayOf(PropTypes.shape({
         /**
@@ -131,6 +136,9 @@ AverageSessionsLine.propTypes = {
          */
         sessionLength : PropTypes.number
     })),
+    /**
+     * The unique id of the user - used to acquire to correct data from the API or the mocked data
+     */
     id : PropTypes.number
 }
 

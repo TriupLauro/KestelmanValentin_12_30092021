@@ -71,12 +71,13 @@ const getUserKeyData = id => {
     return axios.get(`http://localhost:8000/user/${id}/key-data`)
 }
 
-/**
+/*
+/!**
  * Gets the data from all the routes available in the API. The data must be then collected either in a .then block
  * or within an async function with the await keyword. The data will be available in an array.
  * In this array the data will be in the same order than the promises in the array passed as argument in Promise.all
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
- */
+ *!/
 export const getAllData = id => {
     return Promise.all([
         getMainUserData(id),
@@ -87,6 +88,7 @@ export const getAllData = id => {
         getUserKeyData(id)
     ])
 }
+*/
 
 export {
     getUserActivity,

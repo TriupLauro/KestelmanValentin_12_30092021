@@ -33,7 +33,7 @@ class RadarActivityType extends Component {
     /**
      * Rotates the data in the chart
      * @param {Array.<{value : number, kind: number}>} data The data to be rotated (should match the data.data prop type)
-     * @param {number} rotation How much each item in the data should be rotated
+     * @param {number} rotation How much each item in the data should be rotated - must be a positive integer
      * @returns {Object[]} The rotated array
      */
     rotateData(data, rotation) {
@@ -44,7 +44,7 @@ class RadarActivityType extends Component {
     /**
      * Used to get the index after rotating the data
      * @param {number} index Index of the data in the starting array
-     * @param {number} rotation How many indexes each item in the array should be rotated
+     * @param {number} rotation How many indexes each item in the array should be rotated - must be a positive integer
      * @param {number} length Length of the starting array
      * @returns {number} The new index in the rotated array
      */
@@ -53,6 +53,10 @@ class RadarActivityType extends Component {
     }
 
     componentDidMount() {
+        if (this.props.data) {
+            this.setState({isLoading : false, data : this.props.data})
+            return null
+        }
         acquireUserActivityType(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
@@ -115,6 +119,7 @@ class RadarActivityType extends Component {
 RadarActivityType.propTypes = {
     /**
      * Used for a customized mock - used by storybook
+     * If set data will not be acquired from the API or the mocked data file
      */
     data :  PropTypes.shape({
         userId : PropTypes.number.isRequired,
@@ -129,7 +134,13 @@ RadarActivityType.propTypes = {
             kind : PropTypes.number
         }))
     }),
+    /**
+     * Specifies how to rotate the data in the chart - must be a positive integer
+     */
     rotation : PropTypes.number.isRequired,
+    /**
+     * The unique id of the user - used to acquire to correct data from the API or the mocked data
+     */
     id : PropTypes.number
 }
 
