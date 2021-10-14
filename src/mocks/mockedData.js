@@ -1,3 +1,7 @@
+//File containing all the mocked data and the function to access it by imitating the API calls
+//Doesn't actually call the API
+//Only data for users id 12 and 18
+
 const USER_MAIN_DATA = [
     {
         id: 12,
@@ -262,6 +266,11 @@ const USER_PERFORMANCE = [
     }
 ]
 
+/**
+ * Mock the response object in case the id provided isn't found
+ * @param {number} id Numeral identifier for the user which data is retrieved
+ * @returns {{response: {data: string}}}
+ */
 const errorObject = id => {
     return {
         response : {
@@ -270,6 +279,12 @@ const errorObject = id => {
     }
 }
 
+/**
+ * Mock the data without calling the API - Returns the main user data
+ * Uses the data from this file
+ * @param {number} id Numeral identifier for the user which data is retrieved
+ * @returns {Promise<unknown>}
+ */
 const mockMainUserData = id => {
     return new Promise((resolve, reject) => {
         const data = {
@@ -282,6 +297,12 @@ const mockMainUserData = id => {
     })
 }
 
+/**
+ * Mock the data without calling the API - Returns the daily user activity : weight and burned calories
+ * Uses the data from this file
+ * @param {number} id Numeral identifier for the user which data is retrieved
+ * @returns {Promise<unknown>}
+ */
 const mockUserActivity = id => {
     return new Promise ((resolve, reject) => {
         const data = {
@@ -295,6 +316,12 @@ const mockUserActivity = id => {
     })
 }
 
+/**
+ * Mock the data without calling the API - Returns the daily score
+ * Uses the data from this file
+ * @param {number} id Numeral identifier for the user which data is retrieved
+ * @returns {Promise<unknown>}
+ */
 const mockUserScore = id => {
     return new Promise ((resolve, reject) => {
         const data = {
@@ -308,6 +335,12 @@ const mockUserScore = id => {
     })
 }
 
+/**
+ * Mock the data without calling the API - Returns the average length of user's sports sessions (in minutes)
+ * Uses the data from this file
+ * @param {number} id Numeral identifier for the user which data is retrieved
+ * @returns {Promise<unknown>}
+ */
 const mockUserAverageSessions = id => {
     return new Promise((resolve, reject) => {
         const data = {
@@ -320,6 +353,12 @@ const mockUserAverageSessions = id => {
     })
 }
 
+/**
+ * Mock the data without calling the API - Returns the type of physical activity for the user
+ * Uses the data from this file
+ * @param {number} id Numeral identifier for the user which data is retrieved
+ * @returns {Promise<unknown>}
+ */
 const mockUserActivityType = id => {
     return new Promise((resolve, reject) => {
         const data = {
@@ -332,6 +371,12 @@ const mockUserActivityType = id => {
     })
 }
 
+/**
+ * Mock the data without calling the API - Get the key data of the user : nutrition data
+ * Uses the data from this file
+ * @param {number} id Numeral identifier for the user which data is retrieved
+ * @returns {Promise<unknown>}
+ */
 const mockUserKeyData = id => {
     return new Promise((resolve, reject) => {
         const data = {

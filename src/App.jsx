@@ -21,7 +21,13 @@ class App extends Component {
 
 
 App.propTypes = {
+    /**
+     * The id which user we gonna retrieve the data (only 12 or 18)
+     */
     id : PropTypes.number.isRequired,
+    /**
+     * User's yesterday goal where achieved ?
+     */
     goalAchieved : PropTypes.bool
 }
 
