@@ -10,14 +10,13 @@ It needs to get .JSON data from the [API](https://github.com/TriupLauro/P12-API-
 
 ## Prerequisites
 
-### For the API
-
 You need to have installed [NodeJs](https://nodejs.org/en/).
 
-### For the app itself
-
-You could either use **npm** (which comes with NodeJS) or install [**yarn**](https://yarnpkg.com/)
+You could either use **npm** (which comes with NodeJS) or install [**yarn (classic)**](https://classic.yarnpkg.com/lang/en/)
 for dependencies management and for running both the API and the app.
+
+You need the **classic** version of yarn (version that starts with the number 1). 
+To manage multiple versions fo yarn under macOS or linux you can use [yvm (Yarn Version Manager)](https://yvm.js.org/docs/overview)
 
 ## Installing the codebase
 
@@ -27,9 +26,8 @@ First you need to have the API running.
 
 Clone it on your computer in a directory of your choice.
 
-`git clone https://github.com/TriupLauro/P12-API-Front-End`
-
-(or clone it with your IDE)
+- `git clone https://github.com/TriupLauro/P12-API-Front-End`
+- or clone it with your IDE
 
 Go to the API folder
 
@@ -47,7 +45,8 @@ Go back to the parent folder (or another folder of your choice)
 
 Clone this repository, with another terminal window (or with your IDE) in another folder.
 
-`git clone https://github.com/TriupLauro/KestelmanValentin_12_30092021.git`
+- `git clone https://github.com/TriupLauro/KestelmanValentin_12_30092021.git`
+- or clone it with your IDE
 
 Go to the app folder 
 
