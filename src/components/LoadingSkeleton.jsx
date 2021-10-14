@@ -2,6 +2,7 @@ import {Component} from "react";
 
 /**
  * The loading skeleton of the graphical interface while the data is loading
+ * Not used anymore
  * @component
  */
 class LoadingSkeleton extends Component {

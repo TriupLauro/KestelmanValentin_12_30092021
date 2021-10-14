@@ -1,7 +1,7 @@
 import {Component} from "react";
-import TopNav from "./components/TopNav";
-import VerticalBar from "./components/VerticalBar";
-import Dashboard from "./components/Dashboard";
+import TopNav from "./layouts/TopNav";
+import VerticalBar from "./layouts/VerticalBar";
+import Dashboard from "./layouts/Dashboard";
 import PropTypes from "prop-types";
 
 class App extends Component {

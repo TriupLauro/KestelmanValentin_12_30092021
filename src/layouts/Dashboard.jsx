@@ -1,12 +1,12 @@
 import {Component} from "react";
-import Nutrition from "./Nutrition";
-import DailyActivity from "./DailyActivity";
-import AverageSessionsLine from "./AverageSessionsLine";
-import RadarActivityType from "./RadarActivityType";
-import ScoreRadial from "./ScoreRadial";
+import Nutrition from "../components/Nutrition";
+import DailyActivity from "../components/DailyActivity";
+import AverageSessionsLine from "../components/AverageSessionsLine";
+import RadarActivityType from "../components/RadarActivityType";
+import ScoreRadial from "../components/ScoreRadial";
 import PropTypes from "prop-types";
-import Greeting from "./Greeting";
-import Congratulations from "./Congratulations";
+import Greeting from "../components/Greeting";
+import Congratulations from "../components/Congratulations";
 
 class Dashboard extends Component {
     render() {

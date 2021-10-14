@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {BarChart, Bar, XAxis, YAxis, Legend, Tooltip, CartesianGrid, ResponsiveContainer} from "recharts";
 import {BarChartLegend} from "../constants/GraphLegends";
-import DailyActivityTooltip from "./DailyActivityTooltip";
+import DailyActivityTooltip from "../custom chart components/DailyActivityTooltip";
 import PropTypes from "prop-types";
 import {acquireUserActivity} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";

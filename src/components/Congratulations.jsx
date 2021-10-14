@@ -1,6 +1,12 @@
 import {Component} from "react";
 import PropTypes from "prop-types";
 
+/**
+ * This component appears only if yesterday's goal was achieved
+ * --Not actually linked to any kind of data from the API--
+ * 
+ * @component
+ */
 class Congratulations extends Component {
     render() {
         return(
@@ -11,6 +17,9 @@ class Congratulations extends Component {
 }
 
 Congratulations.propTypes = {
+    /**
+     * This component is only displayed if set to true
+     */
     goalAchieved : PropTypes.bool
 }
 
