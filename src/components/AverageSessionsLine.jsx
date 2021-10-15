@@ -63,7 +63,7 @@ class AverageSessionsLine extends Component {
         return (
             <div className="relative w-1/3">
                 <div className="absolute top-1/10 left-1/10 z-10 w-36 text-white opacity-50">Durée moyenne des sessions</div>
-                <ResponsiveContainer width="90%" aspect={1}>
+                <ResponsiveContainer width="90%" aspect={1} minHeight={300}>
                     <LineChart
                         data={this.props.data ?? this.state.data.sessions}
                         border={5}

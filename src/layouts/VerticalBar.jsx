@@ -11,7 +11,7 @@ import Dumbbell from "../assets/Dumbbell";
 class VerticalBar extends Component {
     render() {
         return (
-            <div className="bg-black w-left-bar h-screen -mt-v-bar flex flex-col justify-center items-center">
+            <div className="bg-black w-left-bar xl:h-screen -mt-v-bar flex flex-col justify-center items-center relative">
                 <nav className="flex flex-col">
                     <button className="w-16 h-16 bg-white rounded-md mb-5"><Meditate /></button>
                     <button className="w-16 h-16 bg-white rounded-md mb-5"><Swim /></button>

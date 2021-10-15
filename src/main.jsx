@@ -5,6 +5,6 @@ import App from './App'
 
 ReactDOM.render(
     <React.StrictMode>
-        <App id={18} goalAchieved={false}/>
+        <App id={18} goalAchieved={true}/>
     </React.StrictMode>,
     document.getElementById('root'))

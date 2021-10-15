@@ -20,7 +20,8 @@ module.exports = {
                 't-dboard' : '4.25rem',
                 'l-dboard' : '6.75rem',
                 't-record' : '2.5rem',
-                't-main' : '4.875rem'
+                't-main' : '4.875rem',
+                'l-dboard-lg' : '2rem'
             },
             fontSize: {
                 md : '1.5rem',
@@ -28,7 +29,7 @@ module.exports = {
                 'nutri-value' : '1.25rem',
                 'bar-legend' : '0.875rem',
                 'score-percent' : '100%',
-                'score-title' : '1.5vw'
+                'score-title' : '1.25vw'
             },
             height: {
                 md: '5.625rem',
@@ -36,7 +37,8 @@ module.exports = {
                 'nutri-bg' : '8vw',
                 'nutri-icon' : '3.75rem',
                 'graphs' : '21vw',
-                'subgraphs' : '16.7vw'
+                'subgraphs' : '16.7vw',
+                'subgraphs-lg' : '26vw'
             },
             lineHeight: {
                 'top-nav': '5.625rem'
@@ -45,7 +47,8 @@ module.exports = {
                 'left-bar': '7.375rem',
                 'nutri-bg' : '20vw',
                 'nutri-icon' : '3.75rem',
-                'dashboard' : 'calc(100vw - theme("width.left-bar") - theme("spacing.l-dboard"))'
+                'dashboard' : 'calc(100vw - theme("width.left-bar") - theme("spacing.l-dboard"))',
+                'dashboard-lg' : 'calc(100vw - theme("width.left-bar") - 2rem)'
             },
             margin : {
                 '-v-bar' : '-5.625rem'
