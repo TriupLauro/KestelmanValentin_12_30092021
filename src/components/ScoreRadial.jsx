@@ -4,6 +4,8 @@ import {numberBetweenZeroAndOne} from "../utils/utils";
 import {acquireUserScore} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 import PropTypes from "prop-types";
+import CustomScoreComponent from "../custom chart components/CustomScoreComponent";
+import {Customized} from "recharts";
 
 /**
  * The component used to display the daily score of the user as an arc
@@ -85,6 +87,7 @@ class ScoreRadial extends Component {
                                 dataKey="value"
                                 legendType="line"
                             />
+                            <Customized component={<CustomScoreComponent />} />
                         </RadialBarChart>
                     </ResponsiveContainer>
                 </div>
