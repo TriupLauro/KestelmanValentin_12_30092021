@@ -60,7 +60,7 @@ class DailyActivity extends Component {
 
         return (
             <div className='relative'>
-                <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal'>Activité quotidienne</div>
+                <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal z-10'>Activité quotidienne</div>
                 <ResponsiveContainer width="100%" aspect={2.6}>
                     <BarChart
                         data={this.props.data ?? this.state.data}
