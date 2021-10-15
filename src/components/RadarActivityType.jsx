@@ -104,7 +104,7 @@ class RadarActivityType extends Component {
                         margin={{top:20,right:20,bottom:20,left:20}}
                     >
                         <Radar dataKey="value" fill="#FF0101F2" />
-                        <PolarGrid />
+                        <PolarGrid radialLines={false}/>
                         <PolarAngleAxis dataKey="kind" axisLine={true}
                                         tickFormatter={tick => this.frenchLabels[tick]}
                                         stroke="white" fontSize='0.9vw' tickLine={false}
