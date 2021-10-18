@@ -14,13 +14,25 @@ class Greeting extends Component {
     }
 
     componentDidMount() {
+        /**
+         * Load the data (from mocks or API call depending on callTheAPI in config.js)
+         */
         acquireMainUserData(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
             })
+            /**
+             * Tell the component to display an error
+             */
             .catch(error => {
+                /**
+                 * In case the data couldn't be retrieved : wrong User Id
+                 */
                 if (error.response) {
                     this.setState({isLoading: false, error: error.response.data})
+                    /**
+                     * In case we don't even get a response from the mock/api
+                     */
                 }else{
                     this.setState({isLoading: false, error: 'Is the API running ?'})
                 }

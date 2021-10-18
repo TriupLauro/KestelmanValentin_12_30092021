@@ -3,14 +3,16 @@ import {
     getMainUserData,
     getUserActivity,
     getUserActivityType,
-    getUserAverageSessions, getUserKeyData,
+    getUserAverageSessions,
+    getUserKeyData,
     getUserScore
 } from "./src/utils/utils";
 import {
     mockMainUserData,
     mockUserActivity,
     mockUserActivityType,
-    mockUserAverageSessions, mockUserKeyData,
+    mockUserAverageSessions,
+    mockUserKeyData,
     mockUserScore
 } from "./src/mocks/mockedData";
 
