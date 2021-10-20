@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {NutritionDetails} from "../constants/NutritionDetails";
 import PropTypes from "prop-types";
-import {acquireUserKeyData} from "../../index";
+import {getUserKeyData} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 
 /**
@@ -36,7 +36,7 @@ class Nutrition extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        acquireUserKeyData(this.props.id).then(responseData => {
+        getUserKeyData(this.props.id).then(responseData => {
             this.setState({isLoading : false, data : responseData.data.data[this.key]})
         })
             /**

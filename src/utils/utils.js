@@ -21,7 +21,7 @@ export const numberBetweenZeroAndOne = (props, propName, componentName) => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const getMainUserData = id => {
+const fetchMainUserData = id => {
     return axios.get(`http://localhost:8000/user/${id}/`)
 }
 
@@ -30,7 +30,7 @@ const getMainUserData = id => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const getUserActivity = id => {
+const fetchUserActivity = id => {
     return axios.get(`http://localhost:8000/user/${id}/activity`)
 }
 
@@ -39,7 +39,7 @@ const getUserActivity = id => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const getUserAverageSessions = id => {
+const fetchUserAverageSessions = id => {
     return axios.get(`http://localhost:8000/user/${id}/average-sessions`)
 }
 
@@ -49,7 +49,7 @@ const getUserAverageSessions = id => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const getUserActivityType = id => {
+const fetchUserActivityType = id => {
     return axios.get(`http://localhost:8000/user/${id}/performance`)
 }
 
@@ -58,7 +58,7 @@ const getUserActivityType = id => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const getUserScore = id => {
+const fetchUserScore = id => {
     return axios.get(`http://localhost:8000/user/${id}/today-score`)
 }
 
@@ -67,15 +67,15 @@ const getUserScore = id => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const getUserKeyData = id => {
+const fetchUserKeyData = id => {
     return axios.get(`http://localhost:8000/user/${id}/key-data`)
 }
 
 export {
-    getUserActivity,
-    getUserScore,
-    getUserAverageSessions,
-    getUserActivityType,
-    getMainUserData,
-    getUserKeyData
+    fetchUserActivity,
+    fetchUserScore,
+    fetchUserAverageSessions,
+    fetchUserActivityType,
+    fetchMainUserData,
+    fetchUserKeyData
 }

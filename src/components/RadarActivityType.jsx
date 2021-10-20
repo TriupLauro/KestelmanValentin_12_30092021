@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer} from "recharts";
 import PropTypes from "prop-types";
-import {acquireUserActivityType} from "../../index";
+import {getUserActivityType} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 
 /**
@@ -63,7 +63,7 @@ class RadarActivityType extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        acquireUserActivityType(this.props.id)
+        getUserActivityType(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
             })

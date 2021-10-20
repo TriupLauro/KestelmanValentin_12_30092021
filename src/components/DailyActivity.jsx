@@ -3,7 +3,7 @@ import {BarChart, Bar, XAxis, YAxis, Legend, Tooltip, CartesianGrid, ResponsiveC
 import {BarChartLegend} from "../constants/GraphLegends";
 import DailyActivityTooltip from "../custom chart components/DailyActivityTooltip";
 import PropTypes from "prop-types";
-import {acquireUserActivity} from "../../index";
+import {getUserActivity} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 
 /**
@@ -33,7 +33,7 @@ class DailyActivity extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        acquireUserActivity(this.props.id)
+        getUserActivity(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data.sessions})
             })

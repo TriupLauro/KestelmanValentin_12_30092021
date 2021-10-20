@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {Line, LineChart, ResponsiveContainer, Tooltip, XAxis} from "recharts";
 import PropTypes from "prop-types";
-import {acquireUserAverageSessions} from "../../index";
+import {getUserAverageSessions} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 import CustomCursor from "../custom chart components/AverageLineCustomCursor";
 import CustomContentAverage from "../custom chart components/CustomContentAverage";
@@ -32,7 +32,7 @@ class AverageSessionsLine extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        acquireUserAverageSessions(this.props.id)
+        getUserAverageSessions(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
             })
@@ -121,7 +121,7 @@ AverageSessionsLine.propTypes = {
     /**
      * The unique id of the user - used to acquire to correct data from the API or the mocked data
      */
-    id : PropTypes.number
+    id : PropTypes.number.isRequired
 }
 
 export default AverageSessionsLine

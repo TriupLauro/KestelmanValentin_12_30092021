@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {acquireMainUserData} from "../../index";
+import {getMainUserData} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 import PropTypes from "prop-types";
 
@@ -17,7 +17,7 @@ class Greeting extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        acquireMainUserData(this.props.id)
+        getMainUserData(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
             })

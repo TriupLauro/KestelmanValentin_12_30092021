@@ -1,11 +1,11 @@
 import {callTheAPI} from "./config";
 import {
-    getMainUserData,
-    getUserActivity,
-    getUserActivityType,
-    getUserAverageSessions,
-    getUserKeyData,
-    getUserScore
+    fetchMainUserData,
+    fetchUserActivity,
+    fetchUserActivityType,
+    fetchUserAverageSessions,
+    fetchUserKeyData,
+    fetchUserScore
 } from "./src/utils/utils";
 import {
     mockMainUserData,
@@ -23,8 +23,8 @@ import {
  * @param {number} id Numeral identifier for the user which data is retrieved
  * @returns {Promise|Promise<*>}
  */
-const acquireUserActivity = id => {
-    return callTheAPI ? getUserActivity(id) : mockUserActivity(id)
+const getUserActivity = id => {
+    return callTheAPI ? fetchUserActivity(id) : mockUserActivity(id)
 }
 
 /**
@@ -34,8 +34,8 @@ const acquireUserActivity = id => {
  * @param {number} id Numeral identifier for the user which data is retrieved
  * @returns {Promise|Promise<*>}
  */
-const acquireUserScore = id => {
-    return callTheAPI ? getUserScore(id) : mockUserScore(id)
+const getUserScore = id => {
+    return callTheAPI ? fetchUserScore(id) : mockUserScore(id)
 }
 
 /**
@@ -45,8 +45,8 @@ const acquireUserScore = id => {
  * @param {number} id Numeral identifier for the user which data is retrieved
  * @returns {Promise|Promise<*>}
  */
-const acquireUserAverageSessions = id => {
-    return callTheAPI ? getUserAverageSessions(id) : mockUserAverageSessions(id)
+const getUserAverageSessions = id => {
+    return callTheAPI ? fetchUserAverageSessions(id) : mockUserAverageSessions(id)
 }
 
 /**
@@ -56,8 +56,8 @@ const acquireUserAverageSessions = id => {
  * @param {number} id Numeral identifier for the user which data is retrieved
  * @returns {Promise|Promise<*>}
  */
-const acquireUserActivityType = id => {
-    return callTheAPI ? getUserActivityType(id) : mockUserActivityType(id)
+const getUserActivityType = id => {
+    return callTheAPI ? fetchUserActivityType(id) : mockUserActivityType(id)
 }
 
 /**
@@ -67,8 +67,8 @@ const acquireUserActivityType = id => {
  * @param {number} id Numeral identifier for the user which data is retrieved
  * @returns {Promise|Promise<*>}
  */
-const acquireMainUserData = id => {
-    return callTheAPI ? getMainUserData(id) : mockMainUserData(id)
+const getMainUserData = id => {
+    return callTheAPI ? fetchMainUserData(id) : mockMainUserData(id)
 }
 
 /**
@@ -78,16 +78,16 @@ const acquireMainUserData = id => {
  * @param {number} id Numeral identifier for the user which data is retrieved
  * @returns {Promise|Promise<*>}
  */
-const acquireUserKeyData = id => {
-    return callTheAPI ? getUserKeyData(id) : mockUserKeyData(id)
+const getUserKeyData = id => {
+    return callTheAPI ? fetchUserKeyData(id) : mockUserKeyData(id)
 }
 
 export {
-    acquireUserActivity,
-    acquireUserScore,
-    acquireUserAverageSessions,
-    acquireUserActivityType,
-    acquireMainUserData,
-    acquireUserKeyData
+    getUserActivity,
+    getUserScore,
+    getUserAverageSessions,
+    getUserActivityType,
+    getMainUserData,
+    getUserKeyData
 }
 
