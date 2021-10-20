@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {NutritionDetails} from "../constants/NutritionDetails";
 import PropTypes from "prop-types";
-import {getUserKeyData} from "../../index";
+import {getUserKeyData, httpRequest} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 
 /**
@@ -36,26 +36,27 @@ class Nutrition extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        getUserKeyData(this.props.id).then(responseData => {
+        httpRequest(this.setState.bind(this),getUserKeyData,this.props.id, this.key)
+        /*getUserKeyData(this.props.id).then(responseData => {
             this.setState({isLoading : false, data : responseData.data.data[this.key]})
         })
-            /**
+            /!**
              * Tell the component to display an error
-             */
+             *!/
             .catch(error => {
                 console.log(error)
-                /**
+                /!**
                  * In case the data couldn't be retrieved : wrong User Id
-                 */
+                 *!/
                 if (error.response) {
                     this.setState({isLoading: false, error: error.response.data})
-                    /**
+                    /!**
                      * In case we don't even get a response from the mock/api
-                     */
+                     *!/
                 }else{
                     this.setState({isLoading: false, error: 'Is the API running ?'})
                 }
-            })
+            })*/
     }
 
     render() {

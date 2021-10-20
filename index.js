@@ -82,12 +82,33 @@ const getUserKeyData = id => {
     return callTheAPI ? fetchUserKeyData(id) : mockUserKeyData(id)
 }
 
+const httpRequest = (setState, requestFunction, ...requestArgs) => {
+    requestFunction(requestArgs[0])
+        .then(responseData => {
+            if (requestArgs.length === 1) {
+                setState({isLoading : false, data : responseData.data.data})
+            }else{
+                if(requestFunction === getUserKeyData) {
+                    setState({isLoading : false, data : responseData.data.data[requestArgs[1]]})
+                }
+            }
+        })
+        .catch(error => {
+            if(error.response) {
+                setState({isLoading: false, error: error.response.data})
+            }else{
+                setState({isLoading: false, error: 'Is the API running ?'})
+            }
+        })
+}
+
 export {
     getUserActivity,
     getUserScore,
     getUserAverageSessions,
     getUserActivityType,
     getMainUserData,
-    getUserKeyData
+    getUserKeyData,
+    httpRequest
 }
 

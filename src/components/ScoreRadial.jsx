@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {RadialBar, RadialBarChart, ResponsiveContainer} from "recharts";
 import {numberBetweenZeroAndOne} from "../utils/utils";
-import {getUserScore} from "../../index";
+import {getUserScore, httpRequest} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 import PropTypes from "prop-types";
 import CustomScoreComponent from "../custom chart components/CustomScoreComponent";
@@ -33,26 +33,27 @@ class ScoreRadial extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        getUserScore(this.props.id)
+        httpRequest(this.setState.bind(this),getUserScore, this.props.id)
+        /*getUserScore(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
             })
-            /**
+            /!**
              * Tell the component to display an error
-             */
+             *!/
             .catch(error => {
-                /**
+                /!**
                  * In case the data couldn't be retrieved : wrong User Id
-                 */
+                 *!/
                 if (error.response) {
                     this.setState({isLoading: false, error: error.response.data})
-                    /**
+                    /!**
                      * In case we don't even get a response from the mock/api
-                     */
+                     *!/
                 }else{
                     this.setState({isLoading: false, error: 'Is the API running ?'})
                 }
-            })
+            })*/
     }
 
     render() {

@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer} from "recharts";
 import PropTypes from "prop-types";
-import {getUserActivityType} from "../../index";
+import {getUserActivityType, httpRequest} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 
 /**
@@ -63,26 +63,27 @@ class RadarActivityType extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        getUserActivityType(this.props.id)
+        httpRequest(this.setState.bind(this),getUserActivityType,this.props.id)
+        /*getUserActivityType(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
             })
-            /**
+            /!**
              * Tell the component to display an error
-             */
+             *!/
             .catch(error => {
-                /**
+                /!**
                  * In case the data couldn't be retrieved : wrong User Id
-                 */
+                 *!/
                 if (error.response) {
                     this.setState({isLoading: false, error: error.response.data})
-                    /**
+                    /!**
                      * In case we don't even get a response from the mock/api
-                     */
+                     *!/
                 }else{
                     this.setState({isLoading: false, error: 'Is the API running ?'})
                 }
-            })
+            })*/
     }
 
     render() {

@@ -1,7 +1,7 @@
 import {Component} from "react";
 import {Line, LineChart, ResponsiveContainer, Tooltip, XAxis} from "recharts";
 import PropTypes from "prop-types";
-import {getUserAverageSessions} from "../../index";
+import {getUserAverageSessions, httpRequest} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 import CustomCursor from "../custom chart components/AverageLineCustomCursor";
 import CustomContentAverage from "../custom chart components/CustomContentAverage";
@@ -32,26 +32,27 @@ class AverageSessionsLine extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        getUserAverageSessions(this.props.id)
+        httpRequest(this.setState.bind(this),getUserAverageSessions,this.props.id)
+        /*getUserAverageSessions(this.props.id)
             .then(responseData => {
                 this.setState({isLoading : false, data : responseData.data.data})
             })
-            /**
+            /!**
              * Tell the component to display an error
-             */
+             *!/
             .catch(error => {
-                /**
+                /!**
                  * In case the data couldn't be retrieved : wrong User Id
-                 */
+                 *!/
                 if (error.response) {
                     this.setState({isLoading: false, error: error.response.data})
-                    /**
+                    /!**
                      * In case we don't even get a response from the mock/api
-                     */
+                     *!/
                 }else{
                     this.setState({isLoading: false, error: 'Is the API running ?'})
                 }
-            })
+            })*/
     }
 
     render() {

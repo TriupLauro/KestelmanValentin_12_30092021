@@ -3,7 +3,7 @@ import {BarChart, Bar, XAxis, YAxis, Legend, Tooltip, CartesianGrid, ResponsiveC
 import {BarChartLegend} from "../constants/GraphLegends";
 import DailyActivityTooltip from "../custom chart components/DailyActivityTooltip";
 import PropTypes from "prop-types";
-import {getUserActivity} from "../../index";
+import {getUserActivity, httpRequest} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 
 /**
@@ -33,26 +33,27 @@ class DailyActivity extends Component {
         /**
          * Load the data (from mocks or API call depending on callTheAPI in config.js)
          */
-        getUserActivity(this.props.id)
+        httpRequest(this.setState.bind(this),getUserActivity,this.props.id)
+        /*getUserActivity(this.props.id)
             .then(responseData => {
-                this.setState({isLoading : false, data : responseData.data.data.sessions})
+                this.setState({isLoading : false, data : responseData.data.data})
             })
-            /**
+            /!**
              * Tell the component to display an error
-             */
+             *!/
             .catch(error => {
-                /**
+                /!**
                  * In case the data couldn't be retrieved : wrong User Id
-                 */
+                 *!/
                 if (error.response) {
                     this.setState({isLoading: false, error: error.response.data})
-                    /**
+                    /!**
                      * In case we don't even get a response from the mock/api
-                     */
+                     *!/
                 }else{
                     this.setState({isLoading: false, error: 'Is the API running ?'})
                 }
-        })
+        })*/
     }
 
     render() {
@@ -77,7 +78,7 @@ class DailyActivity extends Component {
                 <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal z-10'>Activité quotidienne</div>
                 <ResponsiveContainer width="100%" aspect={2.6}>
                     <BarChart
-                        data={this.props.data ?? this.state.data}
+                        data={this.props.data ?? this.state.data.sessions}
                         margin={{top: 90}}
                         className='bg-light rounded-md'
                     >
