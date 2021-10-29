@@ -21,8 +21,9 @@ export const numberBetweenZeroAndOne = (props, propName, componentName) => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const fetchMainUserData = id => {
-    return axios.get(`http://localhost:8000/user/${id}/`)
+const fetchMainUserData = async id => {
+    const response = await axios.get(`http://localhost:8000/user/${id}/`)
+    return response.data.data
 }
 
 /**
@@ -30,8 +31,9 @@ const fetchMainUserData = id => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const fetchUserActivity = id => {
-    return axios.get(`http://localhost:8000/user/${id}/activity`)
+const fetchUserActivity = async id => {
+    const response = await axios.get(`http://localhost:8000/user/${id}/activity`)
+    return response.data.data
 }
 
 /**
@@ -39,8 +41,9 @@ const fetchUserActivity = id => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const fetchUserAverageSessions = id => {
-    return axios.get(`http://localhost:8000/user/${id}/average-sessions`)
+const fetchUserAverageSessions = async id => {
+    const response = await axios.get(`http://localhost:8000/user/${id}/average-sessions`)
+    return response.data.data
 }
 
 /**
@@ -49,8 +52,9 @@ const fetchUserAverageSessions = id => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const fetchUserActivityType = id => {
-    return axios.get(`http://localhost:8000/user/${id}/performance`)
+const fetchUserActivityType = async id => {
+    const response = await axios.get(`http://localhost:8000/user/${id}/performance`)
+    return response.data.data
 }
 
 /**
@@ -58,17 +62,20 @@ const fetchUserActivityType = id => {
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
  * @returns {Promise}
  */
-const fetchUserScore = id => {
-    return axios.get(`http://localhost:8000/user/${id}/today-score`)
+const fetchUserScore = async id => {
+    const response = await axios.get(`http://localhost:8000/user/${id}/today-score`)
+    return response.data.data
 }
 
 /**
  * Gets the key-data aka the nutritional data of the user which id is specified. The API must be running.
  * @param id {number} The unique id of the user from who we get the data (Can only be either 12 or 18)
+ * @param key {string} The key corresponding to the kind of nutriment
  * @returns {Promise}
  */
-const fetchUserKeyData = id => {
-    return axios.get(`http://localhost:8000/user/${id}/key-data`)
+const fetchUserKeyData = async (id, key) => {
+    const response = await axios.get(`http://localhost:8000/user/${id}/key-data`)
+    return response.data.data[key]
 }
 
 export {

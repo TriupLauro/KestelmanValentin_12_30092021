@@ -15,6 +15,7 @@ import {
     mockUserKeyData,
     mockUserScore
 } from "./src/mocks/mockedData";
+//import {useState} from "react";
 
 /**
  * Retrieve user activity data
@@ -76,22 +77,18 @@ const getMainUserData = id => {
  * If callTheAPi is set to true (in config.js) calls the API
  * Otherwise, retrieve the data from the mocked file
  * @param {number} id Numeral identifier for the user which data is retrieved
+ * @param key {string} The key corresponding to the kind of nutriment
  * @returns {Promise|Promise<*>}
  */
-const getUserKeyData = id => {
-    return callTheAPI ? fetchUserKeyData(id) : mockUserKeyData(id)
+const getUserKeyData = (id,key) => {
+    return callTheAPI ? fetchUserKeyData(id , key) : mockUserKeyData(id, key)
 }
 
 const httpRequest = (setState, requestFunction, ...requestArgs) => {
-    requestFunction(requestArgs[0])
+    requestFunction(...requestArgs)
         .then(responseData => {
-            if (requestArgs.length === 1) {
-                setState({isLoading : false, data : responseData.data.data})
-            }else{
-                if(requestFunction === getUserKeyData) {
-                    setState({isLoading : false, data : responseData.data.data[requestArgs[1]]})
-                }
-            }
+            //console.log(responseData)
+            setState({isLoading : false, data : responseData})
         })
         .catch(error => {
             if(error.response) {
@@ -101,6 +98,13 @@ const httpRequest = (setState, requestFunction, ...requestArgs) => {
             }
         })
 }
+
+/*const useRequest = (requestFunction, ...requestArgs) => {
+    const [loading, setLoading] = useState('true')
+    const [error, setError] = useState(null)
+    const [data, setData] = useState({})
+
+}*/
 
 export {
     getUserActivity,

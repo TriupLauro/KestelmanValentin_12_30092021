@@ -293,7 +293,7 @@ const mockMainUserData = id => {
             }
         }
 
-        data.data.data ? resolve(data) : reject(errorObject(id))
+        data.data.data ? resolve(data.data.data) : reject(errorObject(id))
     })
 }
 
@@ -312,7 +312,7 @@ const mockUserActivity = id => {
             }
         }
 
-        data.data?.data?.sessions ? resolve(data) : reject(errorObject(id))
+        data.data?.data?.sessions ? resolve(data.data.data) : reject(errorObject(id))
     })
 }
 
@@ -331,7 +331,7 @@ const mockUserScore = id => {
             }
         }
 
-        data.data.data ? resolve(data) : reject(errorObject(id))
+        data.data.data ? resolve(data.data.data) : reject(errorObject(id))
     })
 }
 
@@ -349,7 +349,7 @@ const mockUserAverageSessions = id => {
             }
         }
 
-        data.data.data ? resolve(data) : reject(errorObject(id))
+        data.data.data ? resolve(data.data.data) : reject(errorObject(id))
     })
 }
 
@@ -367,7 +367,7 @@ const mockUserActivityType = id => {
             }
         }
 
-        data.data.data ? resolve(data) : reject(errorObject(id))
+        data.data.data ? resolve(data.data.data) : reject(errorObject(id))
     })
 }
 
@@ -375,9 +375,10 @@ const mockUserActivityType = id => {
  * Mock the data without calling the API - Get the key data of the user : nutrition data
  * Uses the data from this file
  * @param {number} id Numeral identifier for the user which data is retrieved
+ * @param key {string} The key corresponding to the kind of nutriment
  * @returns {Promise<unknown>}
  */
-const mockUserKeyData = id => {
+const mockUserKeyData = (id,key) => {
     return new Promise((resolve, reject) => {
         const data = {
             data : {
@@ -385,7 +386,7 @@ const mockUserKeyData = id => {
             }
         }
 
-        data.data.data ? resolve(data) : reject(errorObject(id))
+        data.data.data ? resolve(data.data.data[key]) : reject(errorObject(id))
     })
 }
 

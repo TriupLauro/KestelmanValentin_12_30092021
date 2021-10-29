@@ -19,7 +19,7 @@ class Greeting extends Component {
          */
         getMainUserData(this.props.id)
             .then(responseData => {
-                this.setState({isLoading : false, data : responseData.data.data})
+                this.setState({isLoading : false, data : responseData})
             })
             /**
              * Tell the component to display an error
