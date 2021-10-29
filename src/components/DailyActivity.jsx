@@ -1,9 +1,8 @@
-import {Component} from "react";
 import {BarChart, Bar, XAxis, YAxis, Legend, Tooltip, CartesianGrid, ResponsiveContainer} from "recharts";
 import {BarChartLegend} from "../constants/GraphLegends";
-import DailyActivityTooltip from "../custom chart components/DailyActivityTooltip";
+import DailyActivityTooltip from "../custom_chart_components/DailyActivityTooltip";
 import PropTypes from "prop-types";
-import {getUserActivity, httpRequest} from "../../index";
+import {getUserActivity, useRequest} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 
 /**
@@ -12,76 +11,59 @@ import ErrorDisplay from "./ErrorDisplay";
  *
  * @component
  */
-class DailyActivity extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoading : true,
-            error : false,
-            data : []
-        }
-    }
+function DailyActivity (props) {
 
-    componentDidMount() {
-        /**
-         * Don't call the API/mocks if the data is passed through props
-         */
-        if (this.props.data) {
-            this.setState({isLoading : false, data : this.props.data})
-            return null
-        }
-        /**
-         * Load the data (from mocks or API call depending on callTheAPI in config.js)
-         */
-        httpRequest(this.setState.bind(this),getUserActivity,this.props.id)
-    }
+    const {
+        loading,
+        error,
+        data
+    } = useRequest(getUserActivity,props.id)
 
-    render() {
-        if (this.state.error) {
-            return (
-                <div className='relative bg-light rounded-md h-graphs flex'>
-                    <ErrorDisplay errorMsg={this.state.error} />
-                </div>
-            )
-        }
-
-        if (this.state.isLoading) {
-            return (
-                <div className='relative bg-subdued rounded-md h-graphs animate-pulse flex'>
-                    <div className='m-auto'>Chargement...</div>
-                </div>
-            )
-        }
-
+    if (error) {
         return (
-            <div className='relative'>
-                <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal z-10'>Activité quotidienne</div>
-                <ResponsiveContainer width="100%" aspect={2.6}>
-                    <BarChart
-                        data={this.props.data ?? this.state.data.sessions}
-                        margin={{top: 90}}
-                        className='bg-light rounded-md'
-                    >
-                        <Tooltip
-                            content={<DailyActivityTooltip />}
-                        />
-                        <CartesianGrid vertical={false} strokeDasharray={4}/>
-                        <XAxis dataKey="day" tickLine={false}/>
-                        <YAxis yAxisId="kilogram" orientation="right" tickLine={false} axisLine={false} dataKey="kilogram"
-                               domain={['dataMin - 1', 'dataMax']} tickCount={3}/>
-                        <YAxis yAxisId="calories" orientation="right" tickLine={false} axisLine={false} dataKey="calories" hide={true} />
-                        <Bar dataKey="kilogram" fill="#2B2D30" barSize={7} radius={[3,3,0,0]} yAxisId="kilogram" />
-                        <Bar dataKey="calories" fill="#E60000" barSize={7} radius={[3,3,0,0]} yAxisId="calories" />
-                        <Legend iconType="circle" align="right" verticalAlign="top" iconSize={8} wrapperStyle={{top:24}}
-                                formatter={(value) => {
-                                    return <span className="ml-2.5 mr-8 text-subdued text-bar-legend">{BarChartLegend[value]}</span>
-                                }}
-                        />
-                    </BarChart>
-                </ResponsiveContainer>
+            <div className='relative bg-light rounded-md h-graphs flex'>
+                <ErrorDisplay errorMsg={error} />
             </div>
         )
     }
+
+    if (loading) {
+        return (
+            <div className='relative bg-subdued rounded-md h-graphs animate-pulse flex'>
+                <div className='m-auto'>Chargement...</div>
+            </div>
+        )
+    }
+
+    return (
+        <div className='relative'>
+            <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal z-10'>Activité quotidienne</div>
+            <ResponsiveContainer width="100%" aspect={2.6}>
+                <BarChart
+                    data={data?.sessions}
+                    margin={{top: 90}}
+                    className='bg-light rounded-md'
+                >
+                    <Tooltip
+                        content={<DailyActivityTooltip />}
+                    />
+                    <CartesianGrid vertical={false} strokeDasharray={4}/>
+                    <XAxis dataKey="day" tickLine={false}/>
+                    <YAxis yAxisId="kilogram" orientation="right" tickLine={false} axisLine={false} dataKey="kilogram"
+                           domain={['dataMin - 1', 'dataMax']} tickCount={3}/>
+                    <YAxis yAxisId="calories" orientation="right" tickLine={false} axisLine={false} dataKey="calories" hide={true} />
+                    <Bar dataKey="kilogram" fill="#2B2D30" barSize={7} radius={[3,3,0,0]} yAxisId="kilogram" />
+                    <Bar dataKey="calories" fill="#E60000" barSize={7} radius={[3,3,0,0]} yAxisId="calories" />
+                    <Legend iconType="circle" align="right" verticalAlign="top" iconSize={8} wrapperStyle={{top:24}}
+                            formatter={(value) => {
+                                return <span className="ml-2.5 mr-8 text-subdued text-bar-legend">{BarChartLegend[value]}</span>
+                            }}
+                    />
+                </BarChart>
+            </ResponsiveContainer>
+        </div>
+    )
+
 }
 
 

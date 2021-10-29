@@ -6,4 +6,4 @@
  * The repository for the API must be installed separately - instructions included in the README
  * @type {boolean}
  */
-export const callTheAPI = true
+export const callTheAPI = false

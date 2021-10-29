@@ -3,9 +3,9 @@ import {Line, LineChart, ResponsiveContainer, Tooltip, XAxis} from "recharts";
 import PropTypes from "prop-types";
 import {getUserAverageSessions, httpRequest} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
-import CustomCursor from "../custom chart components/AverageLineCustomCursor";
-import CustomContentAverage from "../custom chart components/CustomContentAverage";
-import AverageLineCustomActiveDot from "../custom chart components/AverageLineCustomActiveDot";
+import CustomCursor from "../custom_chart_components/AverageLineCustomCursor";
+import CustomContentAverage from "../custom_chart_components/CustomContentAverage";
+import AverageLineCustomActiveDot from "../custom_chart_components/AverageLineCustomActiveDot";
 
 /**
  * Component for displaying the length of the average physical activity session of the user as a line chart.

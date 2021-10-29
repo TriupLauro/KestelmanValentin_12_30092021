@@ -15,7 +15,7 @@ import {
     mockUserKeyData,
     mockUserScore
 } from "./src/mocks/mockedData";
-//import {useState} from "react";
+import {useEffect, useState} from "react";
 
 /**
  * Retrieve user activity data
@@ -99,12 +99,29 @@ const httpRequest = (setState, requestFunction, ...requestArgs) => {
         })
 }
 
-/*const useRequest = (requestFunction, ...requestArgs) => {
-    const [loading, setLoading] = useState('true')
+const useRequest = (requestFunction, ...requestArgs) => {
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [data, setData] = useState({})
 
-}*/
+    useEffect(() => {
+        requestFunction(...requestArgs)
+            .then(responseData => {
+                setData(responseData)
+                setLoading(false)
+            })
+            .catch(error => {
+                setLoading(false)
+                error.response ? setError(error.response.data) : setError('Is the API running ?')
+            })
+    },[])
+
+    return {
+        loading,
+        error,
+        data
+    }
+}
 
 export {
     getUserActivity,
@@ -113,6 +130,7 @@ export {
     getUserActivityType,
     getMainUserData,
     getUserKeyData,
-    httpRequest
+    httpRequest,
+    useRequest
 }
 

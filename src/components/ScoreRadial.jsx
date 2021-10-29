@@ -4,7 +4,7 @@ import {numberBetweenZeroAndOne} from "../utils/utils";
 import {getUserScore, httpRequest} from "../../index";
 import ErrorDisplay from "./ErrorDisplay";
 import PropTypes from "prop-types";
-import CustomScoreComponent from "../custom chart components/CustomScoreComponent";
+import CustomScoreComponent from "../custom_chart_components/CustomScoreComponent";
 import {Customized} from "recharts";
 
 /**
