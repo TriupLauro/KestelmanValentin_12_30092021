@@ -84,10 +84,16 @@ const getUserKeyData = (id,key) => {
     return callTheAPI ? fetchUserKeyData(id , key) : mockUserKeyData(id, key)
 }
 
+/**
+ * Function used to call the API in the componentDidMount method of the class component
+ * Can be used in any class component, as long as you pass the adequate parameters
+ * @param {function} setState The this.setState function of the class component
+ * @param {function} requestFunction The function used to get the data (see the above functions)
+ * @param {...string} requestArgs The arguments of the request function. Must have at least the user Id
+ */
 const httpRequest = (setState, requestFunction, ...requestArgs) => {
     requestFunction(...requestArgs)
         .then(responseData => {
-            //console.log(responseData)
             setState({isLoading : false, data : responseData})
         })
         .catch(error => {
@@ -99,6 +105,15 @@ const httpRequest = (setState, requestFunction, ...requestArgs) => {
         })
 }
 
+/**
+ * Custom Hook version of httpRequest
+ * Used to call the API in a functional component
+ * Take the appropriate function to get the data (see above get functions)
+ * The three return values should be used as component state
+ * @param {function} requestFunction The get function to access the api/mocked data
+ * @param {...string} requestArgs The arguments of the request function. Should have at lease the user Id
+ * @returns {{data: {}, loading: boolean, error: null|string}}
+ */
 const useRequest = (requestFunction, ...requestArgs) => {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
