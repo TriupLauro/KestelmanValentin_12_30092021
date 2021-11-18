@@ -19,7 +19,7 @@ function DailyActivity (props) {
         data
     } = useRequest(getUserActivity,props.id)
 
-    if (error) {
+    if (!props.data && error) {
         return (
             <div className='relative bg-light rounded-md h-graphs flex'>
                 <ErrorDisplay errorMsg={error} />
@@ -27,7 +27,7 @@ function DailyActivity (props) {
         )
     }
 
-    if (loading) {
+    if (!props.data && loading) {
         return (
             <div className='relative bg-subdued rounded-md h-graphs animate-pulse flex'>
                 <div className='m-auto'>Chargement...</div>
@@ -40,7 +40,7 @@ function DailyActivity (props) {
             <div className='absolute text-bar-legend bar-chart-title left-8 top-6 font-normal z-10'>Activité quotidienne</div>
             <ResponsiveContainer width="100%" aspect={2.6}>
                 <BarChart
-                    data={data?.sessions}
+                    data={props.data ?? data?.sessions}
                     margin={{top: 90}}
                     className='bg-light rounded-md'
                 >
