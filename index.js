@@ -89,7 +89,7 @@ const getUserKeyData = (id,key) => {
  * Can be used in any class component, as long as you pass the adequate parameters
  * @param {function} setState The this.setState function of the class component
  * @param {function} requestFunction The function used to get the data (see the above functions)
- * @param {...string} requestArgs The arguments of the request function. Must have at least the user Id
+ * @param {...string|number} requestArgs The arguments of the request function. Must have at least the user Id
  */
 const httpRequest = (setState, requestFunction, ...requestArgs) => {
     requestFunction(...requestArgs)
@@ -111,7 +111,7 @@ const httpRequest = (setState, requestFunction, ...requestArgs) => {
  * Take the appropriate function to get the data (see above get functions)
  * The three return values should be used as component state
  * @param {function} requestFunction The get function to access the api/mocked data
- * @param {...string} requestArgs The arguments of the request function. Should have at lease the user Id
+ * @param {...string|number} requestArgs The arguments of the request function. Should have at lease the user Id
  * @returns {{data: {}, loading: boolean, error: null|string}}
  */
 const useRequest = (requestFunction, ...requestArgs) => {
