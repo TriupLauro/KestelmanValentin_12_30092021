@@ -93,8 +93,6 @@ class RadarActivityType extends Component {
             <div className="w-1/3">
                 <ResponsiveContainer width="90%" aspect={1} className="m-auto">
                     <RadarChart
-                        width={258}
-                        height={263}
                         data={this.rotateData(this.props?.data?.data ?? this.state.data.data ,this.props.rotation)}
                         className="bg-radar rounded-md mr-7"
                         margin={{top:20,right:20,bottom:20,left:20}}
