@@ -1,34 +1,22 @@
 import {Component} from "react";
-import TopNav from "./layouts/TopNav";
-import VerticalBar from "./layouts/VerticalBar";
 import Dashboard from "./layouts/Dashboard";
-import PropTypes from "prop-types";
+import MainLayout from "./layouts/MainLayout";
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userId : parseInt(this.props.match.params.userId)
+        }
+    }
+
     render() {
         return (
-            <>
-                <TopNav />
-                <div className="flex">
-                    <VerticalBar />
-                    <Dashboard id={this.props.id} goalAchieved={this.props.goalAchieved}/>
-                </div>
-            </>
+            <MainLayout>
+                <Dashboard id={this.state.userId} goalAchieved={true}/>
+            </MainLayout>
         )
     }
-}
-
-
-
-App.propTypes = {
-    /**
-     * The id which user we gonna retrieve the data (only 12 or 18)
-     */
-    id : PropTypes.number.isRequired,
-    /**
-     * User's yesterday goal where achieved ?
-     */
-    goalAchieved : PropTypes.bool
 }
 
 export default App
