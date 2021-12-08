@@ -1,6 +1,5 @@
 import {Component} from "react";
 import PropTypes from "prop-types";
-import {Redirect} from "react-router-dom";
 
 /**
  * The component used to display an error when the API call fails
@@ -9,7 +8,7 @@ import {Redirect} from "react-router-dom";
 class ErrorDisplay extends Component {
     render() {
         return (
-            <Redirect to="/erreur" />
+            <div>Une erreur est survenue : {this.props.errorMsg}</div>
         )
     }
 }
